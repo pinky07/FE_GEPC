@@ -1,0 +1,14 @@
+.nav-tabs {
+    padding-top: 1em;
+}
+
+.nav-tabs .nav-link {
+    color: white !important;
+    font-weight: bold;
+    background-color: #002060;
+}
+
+.currentTab {
+    background-color: #a0ac1b !important;
+    color: white !important;
+}

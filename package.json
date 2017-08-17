@@ -1,0 +1,32 @@
+{
+  "name": "npec",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^4.0.0-alpha.6",
+    "classnames": "^2.2.5",
+    "create-react-class": "^15.6.0",
+    "lodash": "^4.17.4",
+    "node-sass-chokidar": "0.0.3",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "react-bootstrap": "^0.31.2",
+    "react-contexify": "^2.0.7",
+    "react-data-grid": "^2.0.55",
+    "react-dom": "^15.6.1",
+    "react-redux": "^5.0.6",
+    "react-scripts": "1.0.10",
+    "react-sortable-tree": "^0.1.21",
+    "react-table": "^6.5.3",
+    "react-transition-group": "^1.2.0",
+    "reactstrap": "^4.8.0",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}

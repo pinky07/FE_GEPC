@@ -1,0 +1,49 @@
+.rdg-cell-expand {
+    left: .8em;
+}
+
+.rdg-child-row-action-cross {
+    display: none;
+}
+
+.numericCell {
+    text-align: center;
+    color: #4d4e54;
+}
+
+.react-grid-HeaderCell {
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    background-color: #002060 !important;
+}
+
+.react-grid-Cell {
+    background: none !important;
+    border-color: white !important;
+}
+
+.react-grid-Cell__value div span div {
+
+}
+
+.react-grid-Canvas {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+}
+
+.react-grid-Main {
+    outline: none !important;
+}
+
+.react-grid-Grid {
+    border: none !important;
+}
+
+.darkGreenRow {
+    background-color: #d0d68f;
+}
+
+.lightGreenRow {
+    background-color: #eeece1;
+}
