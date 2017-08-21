@@ -210,6 +210,7 @@ class AllocationTree extends React.Component {
             <SortableTree
               treeData={this.state.treeData}
               onChange={treeData => this.setState({ treeData })}
+              canDrop={ ({ nextPath }) => nextPath.length > 1}
               generateNodeProps={rowInfo => ({
                 buttons: this.treeButtons(rowInfo),
               })}
