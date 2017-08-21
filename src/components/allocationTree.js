@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
+import _ from 'lodash';
 import { ContextMenuProvider } from 'react-contexify';
 import {
   Container,
@@ -15,7 +15,11 @@ import SortableTree, {
   addNodeUnderParent,
   changeNodeAtPath
 } from 'react-sortable-tree';
-import * as actions from '../actions';
+import { 
+  getAllocationTree, 
+  selectNode, 
+  saveAllocationTree 
+} from '../actions';
 import NodeMenu from './nodeMenu';
 import TreeButtonBar from './treeButtonBar';
 import NodeDetails from './nodeDetails';
@@ -33,6 +37,13 @@ class AllocationTree extends React.Component {
     this.props.getAllocationTree();
   }
 
+  newNode = (node) => {
+    let nd = Object.assign({}, node);
+    return _.forOwn(nd, (value, key) => {
+      nd[key] = '';
+    });
+  }
+
   addAbove = () => {
     let { path, node } = this.props.selectedNode;
     let treeData = Object.assign([], this.state.treeData);
@@ -42,6 +53,7 @@ class AllocationTree extends React.Component {
       path,
       getNodeKey: ({ treeIndex }) => treeIndex,
       newNode: {
+        ...this.newNode(node),
         title: `${node.title} parent`,
         accountgroupname: `${node.title} parent`,
         children: [node],
@@ -55,7 +67,6 @@ class AllocationTree extends React.Component {
     }));
   }
 
-
   addSibling = () => {
     let { node, path, treeIndex } = this.props.selectedNode;//this.state.selectedNode;
 
@@ -66,6 +77,7 @@ class AllocationTree extends React.Component {
         expandParent: true,
         getNodeKey: ({ treeIndex }) => treeIndex,
         newNode: {
+          ...this.newNode(node),
           title: `${node.title} sibling`,
           accountgroupname: `${node.title} sibling`
         },
@@ -84,6 +96,7 @@ class AllocationTree extends React.Component {
         expandParent: true,
         getNodeKey: ({ treeIndex }) => treeIndex,
         newNode: {
+          ...this.newNode(node),
           title: ` ${node.title} child`,
           accountgroupname: ` ${node.title} child`,
         },
@@ -131,16 +144,20 @@ class AllocationTree extends React.Component {
   }
 
   componentWillReceiveProps (nextProps) {
-    let { treeData } = nextProps;
+    if (nextProps.treeData !== this.props.treeData) {
+      let { treeData } = nextProps;
 
-    if (treeData.length) {
-      treeData[0].expanded = true;
-    }
-    if (!nextProps.selectedNode) {
+      if (treeData.length) {
+        treeData[0].expanded = true;
+      }
       this.setState({
         treeData,
       });
     }
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return nextState.treeData !== this.state.treeData || nextProps.treeData !== this.props.treeData;
   }
 
   saveTree = () => {
@@ -189,13 +206,13 @@ class AllocationTree extends React.Component {
         </Row>
 
         <Row>
-          <Col lg="9" md="9" sm="12" className="treecontainer">
+          <Col lg="8" md="8" sm="12" className="treecontainer">
             <SortableTree
               treeData={this.state.treeData}
               onChange={treeData => this.setState({ treeData })}
               generateNodeProps={rowInfo => ({
-              buttons: this.treeButtons(rowInfo),
-            })}
+                buttons: this.treeButtons(rowInfo),
+              })}
             />
             <NodeMenu
               addAbove={this.addAbove}
@@ -205,7 +222,7 @@ class AllocationTree extends React.Component {
               deleteBelow={this.deleteBelow}
             />
           </Col>
-          <Col lg="3" md="3" sm="12">
+          <Col lg="4" md="4" sm="12">
             <NodeDetails />
           </Col>
         </Row>
@@ -220,17 +237,12 @@ AllocationTree.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    treeData: state.allocationAssets.treeData,
-    selectedNode: state.allocationAssets.selectedNode
+    ...state.allocationTree
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    getAllocationTree: bindActionCreators(actions.getAllocationTree, dispatch),
-    selectNode: bindActionCreators(actions.selectNode, dispatch),
-    saveAllocationTree: bindActionCreators(actions.saveAllocationTree, dispatch)
-  }
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(AllocationTree);
+export default connect( mapStateToProps, {
+  getAllocationTree,
+  selectNode,
+  saveAllocationTree
+} )(AllocationTree);

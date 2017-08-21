@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
-import allocationAssets from './TreeReducer';
+import allocationTree from './TreeReducer';
+import allocationGrid from './GridReducer';
 
 export default combineReducers({
-  allocationAssets
+  allocationTree,
+  allocationGrid
 });

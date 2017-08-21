@@ -10,7 +10,6 @@ export default class TreeButtonBar extends React.Component {
         <Button color="primary" onClick={this.props.save}>Save</Button>{' '}
         <Button color="primary">Copy</Button>{' '}
         <Button color="primary">Delete</Button>{' '}
-        <Button color="primary">Jump Level</Button>{' '}
       </span>
     );
   }

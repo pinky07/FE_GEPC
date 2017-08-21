@@ -18,6 +18,7 @@ const NodeMenu = ({ addAbove, addSibling, addBelow, deleteNode, deleteBelow }) =
     <Item onClick={deleteBelow}>
       Delete Below
     </Item>
+    <Item disabled>Jump Level</Item>
   </ContextMenu>
 );
 

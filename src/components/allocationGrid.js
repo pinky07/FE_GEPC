@@ -5,13 +5,13 @@ import { Container, Row, Col } from 'reactstrap';
 import ReactDataGrid from 'react-data-grid';
 import RowRenderer from './rowRenderer';
 import allocationModel from '../model/allocationModel';
-
+import ExpanderFormatter from './expanderFormatter';
 
 let columns = [
   {
     key: 'accountgroupname',
     name: 'Node',
-    width: 450
+    width: 450,
   },
   {
     key: 'policyTotal',
@@ -83,19 +83,23 @@ const AllocationGrid = createReactClass({
   },
 
   componentWillReceiveProps (nextProps) {
-    allocationModel().getAllocationGrid(nextProps.gridData).then(rows => {
-      this.setState({
-        rows,
+    if (nextProps.gridData !== this.props.gridData) {
+      allocationModel().getAllocationGrid(nextProps.gridData).then(rows => {
+        this.setState({
+          rows,
+        });
       });
-    });
+    }
+  },
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return true;// nextProps.gridData !== this.props.gridData;
   },
 
   render() {
     return (
       <Container>
-        <div className="currentTreeText">
-          <h3>Bose Current Grid</h3>
-        </div>
+        <br/>
         <Row>
           <Col lg="12" md="12">
             <ReactDataGrid
@@ -110,7 +114,6 @@ const AllocationGrid = createReactClass({
             />
           </Col>
         </Row>
-
       </Container>
     );
   }
@@ -118,7 +121,7 @@ const AllocationGrid = createReactClass({
 
 const mapStateToProps = state => {
   return {
-    gridData: state.allocationAssets.gridData,
+    ...state.allocationGrid
   };
 };
 
