@@ -8,14 +8,14 @@
 
 .numericCell {
     text-align: center;
-    color: #4d4e54;
+    color: $gray-1;
 }
 
 .react-grid-HeaderCell {
     text-align: center;
     color: white;
     font-weight: bold;
-    background-color: #002060 !important;
+    background-color: $blue-1 !important;
 }
 
 .react-grid-Cell {
@@ -41,9 +41,9 @@
 }
 
 .darkGreenRow {
-    background-color: #d0d68f;
+    background-color: $green-1;
 }
 
 .lightGreenRow {
-    background-color: #eeece1;
+    background-color: $green-2;
 }

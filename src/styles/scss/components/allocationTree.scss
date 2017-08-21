@@ -22,7 +22,7 @@ h3 {
 }
 
 .rst__moveHandle {
-    background-color: #002060;
+    background-color: $blue-1;
 }
 
 .rst__rowTitle {
@@ -37,23 +37,23 @@ h3 {
 .btn-primary {
     color: #fff;
     font-weight: bold;
-    background-color: #002060;
-    border-color: #002060;
+    background-color: $blue-1;
+    border-color: $blue-1;
 }
 
 .btn-primary:hover {
-    background: #a0ac1b;
-    border-color: #a0ac1b;
+    background: $green;
+    border-color: $green;
 }
 
 button {
     color: #fff;
     font-weight: bold;
-    background-color: #002060;
+    background-color: $blue-1;
     border: none;
 }
 
 /*
 .rst__lineHalfHorizontalRight::before, .rst__lineFullVertical::after, .rst__lineHalfVerticalTop::after, .rst__lineHalfVerticalBottom::after {
-    background-color: #a0ac1b;
+    background-color: $green;
 }*/

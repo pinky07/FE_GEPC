@@ -5,10 +5,10 @@
 .nav-tabs .nav-link {
     color: white !important;
     font-weight: bold;
-    background-color: #002060;
+    background-color: $blue-1;
 }
 
 .currentTab {
-    background-color: #a0ac1b !important;
+    background-color: $green !important;
     color: white !important;
 }
