@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { ContextMenu, Item } from 'react-contexify';
+import { Input } from 'reactstrap';
 
 export class NodeMenu extends React.Component {
 
@@ -26,7 +27,12 @@ export class NodeMenu extends React.Component {
         <Item onClick={this.props.deleteBelow}>
           Delete Below
         </Item>
-        <Item  disabled>Jump Level</Item>
+        <Item  disabled>
+          <div  className="nodeMenu">
+            <span>Jump Level</span>
+            <Input type="number" step="1" disabled/>
+          </div>
+        </Item>
       </ContextMenu>
     );
   }
