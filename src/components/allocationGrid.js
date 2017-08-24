@@ -1,34 +1,43 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import createReactClass from 'create-react-class';
-import { Container, Row, Col } from 'reactstrap';
+import {
+  Container,
+  Row,
+  Col,
+} from 'reactstrap';
 import ReactDataGrid from 'react-data-grid';
+import update from 'immutability-helper';
 import RowRenderer from './rowRenderer';
 import allocationModel from '../model/allocationModel';
 import ExpanderFormatter from './expanderFormatter';
+import MixDetails from './mixDetails';
+import MixStatistics from './mixStatistics';
 
 let columns = [
   {
     key: 'accountgroupname',
     name: 'Node',
     width: 450,
+    formatter: ExpanderFormatter
   },
   {
     key: 'policyTotal',
     name: 'Policy',
-    width: 200,
+    width: 100,
     cellClass: 'numericCell'
   },
   {
     key: 'actual_mv',
     name: 'Actual',
-    width: 250,
+    width: 150,
     cellClass: 'numericCell'
   },
   {
-    key: '',
+    key: 'mixA',
     name: 'Mix A',
-    width: 200,
+    width: 100,
+    editable: true
   }
 ];
 
@@ -82,6 +91,18 @@ const AllocationGrid = createReactClass({
     });
   },
 
+  handleGridRowsUpdated({ fromRow, toRow, updated }) {
+    let rows = this.state.rows.slice();
+
+    for (let i = fromRow; i <= toRow; i++) {
+      let rowToUpdate = rows[i];
+      let updatedRow = update(rowToUpdate, {$merge: updated});
+      rows[i] = updatedRow;
+    }
+
+    this.setState({ rows });
+  },
+
   componentWillReceiveProps (nextProps) {
     if (nextProps.gridData !== this.props.gridData) {
       allocationModel().getAllocationGrid(nextProps.gridData).then(rows => {
@@ -92,16 +113,12 @@ const AllocationGrid = createReactClass({
     }
   },
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return true;// nextProps.gridData !== this.props.gridData;
-  },
-
   render() {
     return (
-      <Container>
+      <Container className="allocationGrid">
         <br/>
         <Row>
-          <Col lg="12" md="12">
+          <Col lg="9" md="9">
             <ReactDataGrid
               enableCellSelect={true}
               columns={columns}
@@ -111,7 +128,12 @@ const AllocationGrid = createReactClass({
               minHeight={500}
               rowRenderer={RowRenderer}
               onCellExpand={this.onCellExpand}
+              onGridRowsUpdated={this.handleGridRowsUpdated}
             />
+          </Col>
+          <Col lg="3" md="3">
+            <MixStatistics />
+            <MixDetails />
           </Col>
         </Row>
       </Container>

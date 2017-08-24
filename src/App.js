@@ -2,7 +2,7 @@ import React from 'react';
 
 import 'react-contexify/dist/ReactContexify.min.css'
 import 'react-table/react-table.css';
-import './styles/css/main.css';
+import './styles/css/app.css';
 
 import Header from './components/header';
 import Content from './components/content';

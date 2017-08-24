@@ -1,0 +1,8 @@
+.expanderFormatter {
+  display: block;
+  padding-left: 2em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 400px;
+}

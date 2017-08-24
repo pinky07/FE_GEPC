@@ -1,0 +1,17 @@
+.nodeDetails {
+  .input-group-addon {
+    background-color: $blue-1;
+    color: white;
+    border: none !important;
+    font-weight: bold;
+  }
+
+  .card, input.form-control {
+    border-color: $green;
+  }
+
+  .card-title {
+    text-align: center;
+    margin-bottom: 1em;
+  }
+}

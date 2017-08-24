@@ -1,59 +1,49 @@
-
-.treecontainer {
+.allocationTree {
+  .treecontainer {
     min-height: 800px;
     height: auto;
     overflow-y: hidden;
-}
+  }
 
-.treeHeader {
+  .treeHeader {
     padding-top: 1em;
     padding-bottom: 1em;
-}
+  }
 
-h3 {
+  h3 {
     display: inline;
-}
+  }
 
-.buttonInfoNode {
+  .buttonInfoNode {
     position: absolute;
     left: 10px;
     width: 80%;
     opacity: 0;
-}
+  }
 
-.rst__moveHandle {
+  .rst__moveHandle {
     background-color: $blue-1;
-}
+  }
 
-.rst__rowTitle {
+  .rst__rowTitle {
     color: #4d4e54;
-}
+  }
 
-.buttonBar {
-    position: absolute;
-    right: 0;
-}
+  .rst__toolbarButton {
+    & button {
+      color: #fff;
+      font-weight: bold;
+      background-color: $blue-1;
+      border: none;
+    }
+  }
 
-.btn-primary {
-    color: #fff;
-    font-weight: bold;
-    background-color: $blue-1;
-    border-color: $blue-1;
-}
-
-.btn-primary:hover {
-    background: $green;
+  .rst__rowContents {
     border-color: $green;
-}
+  }
 
-button {
-    color: #fff;
-    font-weight: bold;
-    background-color: $blue-1;
-    border: none;
-}
-
-/*
-.rst__lineHalfHorizontalRight::before, .rst__lineFullVertical::after, .rst__lineHalfVerticalTop::after, .rst__lineHalfVerticalBottom::after {
+  /*
+  .rst__lineHalfHorizontalRight::before, .rst__lineFullVertical::after, .rst__lineHalfVerticalTop::after, .rst__lineHalfVerticalBottom::after {
     background-color: $green;
-}*/
+  }*/
+}

@@ -1,8 +1,15 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { shallow  } from 'enzyme';
 import App from './App';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
+describe('app component', () => {
+  let app = shallow(<App/>);
+
+  it ('renders the header', () => {
+    expect(app.find('Header').exists()).toBe(true);
+  });
+
+  it ('renders the content', () => {
+    expect(app.find('Content').exists()).toBe(true);
+  });
 });

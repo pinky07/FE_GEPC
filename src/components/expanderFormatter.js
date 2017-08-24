@@ -1,24 +1,18 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
-//import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 const ExpanderFormatter = createReactClass({
-  
-  componentWillReceiveProps(nextProps) {
-   console.log(nextProps);
-  },
-
   render() {
     return (
-      <span>
+      <span className="expanderFormatter" title={this.props.value}>
         {this.props.value}
       </span>
     );
   }
 });
-/*
+
 ExpanderFormatter.propTypes = {
-  expandableOptions: PropTypes.object.isRequired,
-  onCellExpand: PropTypes.func.isRequired
-};*/
+  value: PropTypes.string.isRequired,
+};
 export default ExpanderFormatter;

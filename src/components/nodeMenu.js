@@ -1,25 +1,41 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { ContextMenu, Item } from 'react-contexify';
 
-const NodeMenu = ({ addAbove, addSibling, addBelow, deleteNode, deleteBelow }) => (
-  <ContextMenu id='menu_id'>
-    <Item  onClick={addAbove}>
-      Add Above
-    </Item>
-    <Item  onClick={addSibling}>
-      Add Sibling
-    </Item>
-    <Item onClick={addBelow}>
-      Add Below
-    </Item>
-    <Item onClick={deleteNode}>
-      Delete Node
-    </Item>
-    <Item onClick={deleteBelow}>
-      Delete Below
-    </Item>
-    <Item disabled>Jump Level</Item>
-  </ContextMenu>
-);
+export class NodeMenu extends React.Component {
 
-export default NodeMenu;
+  isRootNode = () => {
+    return this.props.selectedNode && this.props.selectedNode.treeIndex === 0;
+  }
+
+  render () {
+    return (
+      <ContextMenu id='menu_id'>
+        <Item  onClick={this.props.addAbove} disabled={this.isRootNode()}>
+          Add Above
+        </Item>
+        <Item  onClick={this.props.addSibling} disabled={this.isRootNode()}>
+          Add Sibling
+        </Item>
+        <Item onClick={this.props.addBelow}>
+          Add Below
+        </Item>
+        <Item onClick={this.props.deleteNode} disabled={this.isRootNode()}>
+          Delete Node
+        </Item>
+        <Item onClick={this.props.deleteBelow}>
+          Delete Below
+        </Item>
+        <Item  disabled>Jump Level</Item>
+      </ContextMenu>
+    );
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    selectedNode: state.allocationTree.selectedNode
+  };
+};
+
+export default connect(mapStateToProps, null)(NodeMenu);

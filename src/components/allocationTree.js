@@ -183,14 +183,14 @@ class AllocationTree extends React.Component {
       </button>,
     ];
 
-    return rowInfo.treeIndex !== 0 ? buttons : buttons.slice(1);
+    return buttons;
   }
 
   render () {
     //const getNodeKey = ({ treeIndex }) => treeIndex;
     return (
 
-      <Container>
+      <Container className="allocationTree">
         <Row className="treeHeader">
           <Col lg="4" md="4" sm="1" xs="1">
             <Dropdown isOpen={false} toggle={this.toggle}>
