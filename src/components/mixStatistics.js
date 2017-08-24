@@ -23,12 +23,11 @@ class MixStatistics extends React.Component {
     return (
       <div className="statistics">
         <Button onClick={this.toggle}>{this.state.collapse ? 'Hide' : 'Show'} Statistics</Button>
-        <br />
+        
         <Collapse isOpen={this.state.collapse}>
           <Card>
-            <CardTitle>Statistics</CardTitle>
             <CardBlock>
-
+              <CardTitle>Statistics</CardTitle>
             </CardBlock>
           </Card>
         </Collapse>
