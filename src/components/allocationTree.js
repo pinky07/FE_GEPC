@@ -9,6 +9,7 @@ import {
   Col,
   Dropdown,
   DropdownToggle,
+  Input,
 } from 'reactstrap';
 import SortableTree, {
   removeNodeAtPath,
@@ -20,6 +21,7 @@ import {
   selectNode, 
   saveAllocationTree 
 } from '../actions';
+import Constants from '../services/constants';
 import NodeMenu from './nodeMenu';
 import TreeButtonBar from './treeButtonBar';
 import NodeDetails from './nodeDetails';
@@ -37,7 +39,7 @@ class AllocationTree extends React.Component {
     this.props.getAllocationTree();
   }
 
-  newNode = (node) => {
+  newNode = node => {
     let nd = Object.assign({}, node);
     return _.forOwn(nd, (value, key) => {
       nd[key] = '';
@@ -54,8 +56,8 @@ class AllocationTree extends React.Component {
       getNodeKey: ({ treeIndex }) => treeIndex,
       newNode: {
         ...this.newNode(node),
-        title: `${node.title} parent`,
-        accountgroupname: `${node.title} parent`,
+        title: 'Node',
+        accountgroupname: 'Node',
         children: [node],
         expanded: true
       },
@@ -68,7 +70,7 @@ class AllocationTree extends React.Component {
   }
 
   addSibling = () => {
-    let { node, path, treeIndex } = this.props.selectedNode;//this.state.selectedNode;
+    let { node, path, treeIndex } = this.props.selectedNode;
 
     this.setState(state => ({
       treeData: addNodeUnderParent({
@@ -87,7 +89,7 @@ class AllocationTree extends React.Component {
   }
 
   addBelow = () => {
-    let { node, path, treeIndex } = this.props.selectedNode;//this.state.selectedNode;
+    let { node, path, treeIndex } = this.props.selectedNode;
 
     this.setState(state => ({
       treeData: addNodeUnderParent({
@@ -106,7 +108,7 @@ class AllocationTree extends React.Component {
   }
 
   deleteBelow = () => {
-    let { path, node, treeIndex } = this.props.selectedNode;//this.state.selectedNode;
+    let { path, node, treeIndex } = this.props.selectedNode;
 
     if (node.children) {
       let firstChildPath = treeIndex + 1;
@@ -130,7 +132,7 @@ class AllocationTree extends React.Component {
   }
 
   deleteNode = () => {
-    let { path, treeIndex } = this.props.selectedNode;//this.state.selectedNode;
+    let { path, treeIndex } = this.props.selectedNode;
 
     this.setState(state => ({
       treeData: removeNodeAtPath({
@@ -141,6 +143,10 @@ class AllocationTree extends React.Component {
      // selectedNode: {}
     }));
     // this.props.selectNode(undefined);
+  }
+
+  jumpLevel = level => {
+    console.log(level);
   }
 
   componentWillReceiveProps (nextProps) {
@@ -160,6 +166,19 @@ class AllocationTree extends React.Component {
     return nextState.treeData !== this.state.treeData || nextProps.treeData !== this.props.treeData;
   }
 
+  getMaxDepth = ({ children }) => {
+    //return 1 + (children ? Math.max(...children.map(this.getMaxDepth)) : 0);
+    let maxDepth = 0;
+    if (children) {
+      let depth = 0;
+      children.forEach( child => {
+        depth = this.getMaxDepth(child) + 1;
+        maxDepth = depth > maxDepth ? depth : maxDepth;
+      });
+    }
+    return maxDepth;
+  }
+
   saveTree = () => {
     this.props.saveAllocationTree(this.state.treeData);
   }
@@ -170,7 +189,7 @@ class AllocationTree extends React.Component {
     const buttons = [
       <ContextMenuProvider id="menu_id" event="onClick">
         <button
-          onClick={() => this.props.selectNode(rowInfo)}
+          onClick={() => this.props.selectNode({...rowInfo, maxDepth: this.getMaxDepth(rowInfo.node)})}
         >
           ...
         </button>
@@ -192,16 +211,24 @@ class AllocationTree extends React.Component {
 
       <Container className="allocationTree">
         <Row className="treeHeader">
-          <Col lg="4" md="4" sm="1" xs="1">
-            <Dropdown isOpen={false} toggle={this.toggle}>
-              <DropdownToggle caret>
-                Bose Current Tree
-              </DropdownToggle>
-            </Dropdown>
+          <Col lg="3" md="3" sm="1" xs="1">
+            <h5>Bose Current Tree</h5>
           </Col>
 
-          <Col lg="8" md="8" sm="11" xs="11">
+          <Col lg="5" md="5" sm="11" xs="11">
             <TreeButtonBar save={this.saveTree}  />
+          </Col>
+
+          <Col lg="4" md="4" sm="11" xs="11">
+            <div className="settings">
+              <Input placeholder="Global Set" />
+
+              <Dropdown isOpen={false} toggle={this.toggle}>
+                <DropdownToggle caret>
+                  Beta Group1
+                </DropdownToggle>
+              </Dropdown>
+            </div>
           </Col>
         </Row>
 
@@ -211,6 +238,7 @@ class AllocationTree extends React.Component {
               treeData={this.state.treeData}
               onChange={treeData => this.setState({ treeData })}
               canDrop={ ({ nextPath }) => nextPath.length > 1}
+              maxDepth={Constants.maxDepth}
               generateNodeProps={rowInfo => ({
                 buttons: this.treeButtons(rowInfo),
               })}
@@ -221,6 +249,7 @@ class AllocationTree extends React.Component {
               addBelow={this.addBelow}
               deleteNode={this.deleteNode}
               deleteBelow={this.deleteBelow}
+              jumpLevel={this.jumpLevel}
             />
           </Col>
           <Col lg="4" md="4" sm="12">

@@ -34,13 +34,13 @@ export  default class Content extends React.Component {
 
   render () {
     return (
-      <Container>
+      <Container className="content">
         <Row>
           <Col lg="12" md="12">
             <Nav tabs>
               <NavItem>
                 <NavLink
-                  className={this.state.activeTab === TREE_VIEW_TAB ? 'active currentTab' : ''}
+                  className={this.state.activeTab === TREE_VIEW_TAB ? 'active' : ''}
                   onClick={() => { this.toggle(TREE_VIEW_TAB); }}
                 >
                   Tree View
@@ -49,7 +49,7 @@ export  default class Content extends React.Component {
               
               <NavItem>
                 <NavLink
-                  className={this.state.activeTab === GRID_VIEW_TAB ? 'active currentTab' : ''}
+                  className={this.state.activeTab === GRID_VIEW_TAB ? 'active' : ''}
                   onClick={() => { this.toggle(GRID_VIEW_TAB); }}
                 >
                   Grid View

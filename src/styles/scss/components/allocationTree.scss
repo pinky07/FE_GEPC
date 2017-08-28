@@ -8,6 +8,18 @@
   .treeHeader {
     padding-top: 1em;
     padding-bottom: 1em;
+    button {
+      border-color: $green;
+    }
+  }
+
+  .settings {
+    input, .dropdown {
+      display: inline-block;
+      width: 9em;
+      border-color: $green;
+      margin-right: 1em;
+    }
   }
 
   h3 {
@@ -41,9 +53,4 @@
   .rst__rowContents {
     border-color: $green;
   }
-
-  /*
-  .rst__lineHalfHorizontalRight::before, .rst__lineFullVertical::after, .rst__lineHalfVerticalTop::after, .rst__lineHalfVerticalBottom::after {
-    background-color: $green;
-  }*/
 }

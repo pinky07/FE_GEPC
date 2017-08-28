@@ -1,0 +1,31 @@
+.colorPicker {
+  padding: 3px;
+  background: white;
+  border-radius: 2px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: $green;
+  display: inline-block;
+  cursor: pointer;
+  width: 100%;
+  
+  .color {
+    height: 30px;
+    borderRadius: 2px;
+  }
+
+  .popover {
+    position: absolute;
+    left: 11em;
+    top: -9em;
+    z-index: 99;
+  }
+
+  .cover {
+    position: fixed;
+    bottom: 0px;
+    top: 0px;
+    left: 0;
+    right: 0;
+  }
+}

@@ -6,11 +6,11 @@
     color: #fff;
     font-weight: bold;
     background-color: $blue-1;
-    border-color: $blue-1;
+    border: none !important;
+    margin-left: 1em;
   }
 
   .btn-primary:hover {
     background: $green;
-    border-color: $green;
   }
 }

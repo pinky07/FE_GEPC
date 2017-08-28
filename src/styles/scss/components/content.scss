@@ -1,15 +1,20 @@
-.nav-tabs {
-  padding-top: 1em;
-  border-bottom-color: $green;
-}
+.content {
+  background-color: $blue-2;
 
-.nav-tabs .nav-link {
-  color: white !important;
-  font-weight: bold;
-  background-color: $blue-1;
-}
+  .nav-tabs {
+    padding-top: 1em;
+    border-bottom-color: $green;
+  }
 
-.currentTab {
-  background-color: $green !important;
-  color: white !important;
+  .nav-tabs .nav-link {
+    color: white !important;
+    font-weight: bold;
+    background-color: $blue-1;
+  }
+
+  .nav-link.active {
+    background-color: $green !important;
+    color: white !important;
+    border-bottom-color: $green;
+  }
 }

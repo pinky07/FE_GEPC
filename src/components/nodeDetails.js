@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
   InputGroup,
@@ -8,6 +9,7 @@ import {
   CardBlock,
   CardTitle
 } from 'reactstrap';
+import ColorPicker from './colorPicker';
 
 export class NodeDetails extends React.Component {
 
@@ -56,6 +58,7 @@ export class NodeDetails extends React.Component {
   }
 
   render () {
+  
     return (
       <div className="nodeDetails">
         <Card>
@@ -114,6 +117,12 @@ export class NodeDetails extends React.Component {
               <br />
 
               <InputGroup>
+                <InputGroupAddon>Color Assignment</InputGroupAddon>
+                <ColorPicker />
+              </InputGroup>
+              <br />
+
+              <InputGroup>
                 <InputGroupAddon>Liquidity</InputGroupAddon>
                 <Input/>
               </InputGroup>
@@ -140,6 +149,11 @@ export class NodeDetails extends React.Component {
       </div>
     );
   }
+}
+
+
+NodeDetails.propTypes = {
+  selectedNode: PropTypes.object,
 }
 
 const mapStateToProps = state => {
