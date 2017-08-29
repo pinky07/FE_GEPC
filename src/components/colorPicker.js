@@ -1,6 +1,7 @@
 import React from 'react'
 import reactCSS from 'reactcss'
 import { SketchPicker } from 'react-color'
+import Constants from '../services/constants';
 
 export default class ColorPicker extends React.Component {
 
@@ -8,25 +9,21 @@ export default class ColorPicker extends React.Component {
     super(props);
     this.state = {
       displayColorPicker: false,
-      color: {
-        r: '0',
-        g: '32',
-        b: '96',
-        a: '1',
-      },
+      background: Constants.colorPickerDefault,
+      presetColors: Constants.presetColors,
     };
   }
 
   handleClick = () => {
-    this.setState({ displayColorPicker: !this.state.displayColorPicker })
+    this.setState({ displayColorPicker: !this.state.displayColorPicker });
   };
 
   handleClose = () => {
-    this.setState({ displayColorPicker: false })
+    this.setState({ displayColorPicker: false });
   };
 
-  handleChange = (color) => {
-    this.setState({ color: color.rgb })
+  handleChange = color => {
+    this.setState({ background: color.hex });
   };
 
   renderPicker () {
@@ -34,7 +31,11 @@ export default class ColorPicker extends React.Component {
       return (
         <div className="popover">
           <div className="cover" onClick={ this.handleClose }/>
-          <SketchPicker color={ this.state.color } onChange={ this.handleChange } />
+          <SketchPicker
+            color={ this.state.background }
+            onChange={ this.handleChange }
+            presetColors={ this.state.presetColors }
+          />
         </div>
       );
     }
@@ -46,7 +47,7 @@ export default class ColorPicker extends React.Component {
     const styles = reactCSS({
       'default': {
         color: {
-          background: `rgba(${ this.state.color.r }, ${ this.state.color.g }, ${ this.state.color.b }, ${ this.state.color.a })`,
+          background: this.state.background,
         },
       },
     });
