@@ -25,9 +25,14 @@ export class NodeMenu extends React.Component {
     return this.props.selectedNode && this.props.selectedNode.treeIndex === 0;
   }
 
-  onChange = event => {
+  onChangeInput = event => {
+    const max = this.props.selectedNode.maxDepth;
+    let jumpLevel = parseInt(event.target.value, 10);
+
+    jumpLevel = jumpLevel >  max ? max : jumpLevel;
+    jumpLevel = jumpLevel <  1 ? 1 : jumpLevel;
     this.setState({
-      jumpLevel: event.target.value
+      jumpLevel
     });
   }
 
@@ -61,7 +66,7 @@ export class NodeMenu extends React.Component {
                    max={this.props.selectedNode && this.props.selectedNode.maxDepth}
                    value={this.state.jumpLevel}
                    onClick={event => event.stopPropagation()}
-                   onChange={this.onChange}
+                   onChange={this.onChangeInput}
             />
           </div>
         </Item>
@@ -71,7 +76,7 @@ export class NodeMenu extends React.Component {
 }
 
 NodeMenu.propTypes = {
-  selectedNode: PropTypes.object.isRequired,
+  selectedNode: PropTypes.object,
   jumpLevel: PropTypes.func.isRequired,
   deleteNode: PropTypes.func.isRequired,
   deleteBelow: PropTypes.func.isRequired,
