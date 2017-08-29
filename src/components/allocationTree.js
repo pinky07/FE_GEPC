@@ -9,34 +9,38 @@ import {
   Col,
   Dropdown,
   DropdownToggle,
+  DropdownItem,
+  DropdownMenu,
   Input,
 } from 'reactstrap';
 import SortableTree, {
   removeNodeAtPath,
   addNodeUnderParent,
-  changeNodeAtPath
+  changeNodeAtPath,
 } from 'react-sortable-tree';
 import { 
   getAllocationTree, 
   selectNode, 
-  saveAllocationTree 
+  saveAllocationTree,
+  getBetaGroups,
 } from '../actions';
 import Constants from '../services/constants';
 import NodeMenu from './nodeMenu';
 import TreeButtonBar from './treeButtonBar';
 import NodeDetails from './nodeDetails';
 
-
 class AllocationTree extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       treeData: [],
+      dropdownBetaGroupOpen: false,
     };
   }
 
   componentDidMount () {
     this.props.getAllocationTree();
+    this.props.getBetaGroups();
   }
 
   newNode = node => {
@@ -56,10 +60,10 @@ class AllocationTree extends React.Component {
       getNodeKey: ({ treeIndex }) => treeIndex,
       newNode: {
         ...this.newNode(node),
-        title: 'Node',
-        accountgroupname: 'Node',
+        title: Constants.defaultNodeName,
+        accountgroupname: Constants.defaultNodeName,
         children: [node],
-        expanded: true
+        expanded: true,
       },
     });
 
@@ -80,11 +84,10 @@ class AllocationTree extends React.Component {
         getNodeKey: ({ treeIndex }) => treeIndex,
         newNode: {
           ...this.newNode(node),
-          title: `${node.title} sibling`,
-          accountgroupname: `${node.title} sibling`
+          title: Constants.defaultNodeName,
+          accountgroupname: Constants.defaultNodeName,
         },
       }).treeData,
-      //selectedNode: {}
     }));
   }
 
@@ -99,8 +102,8 @@ class AllocationTree extends React.Component {
         getNodeKey: ({ treeIndex }) => treeIndex,
         newNode: {
           ...this.newNode(node),
-          title: ` ${node.title} child`,
-          accountgroupname: ` ${node.title} child`,
+          title: Constants.defaultNodeName,
+          accountgroupname: Constants.defaultNodeName,
         },
       }).treeData,
       //selectedNode: {}
@@ -145,14 +148,10 @@ class AllocationTree extends React.Component {
     // this.props.selectNode(undefined);
   }
 
-  jumpLevel = level => {
-    console.log(level);
-  }
-
   componentWillReceiveProps (nextProps) {
     if (nextProps.treeData !== this.props.treeData) {
       let { treeData } = nextProps;
-
+      
       if (treeData.length) {
         treeData[0].expanded = true;
       }
@@ -167,7 +166,6 @@ class AllocationTree extends React.Component {
   }
 
   getMaxDepth = ({ children }) => {
-    //return 1 + (children ? Math.max(...children.map(this.getMaxDepth)) : 0);
     let maxDepth = 0;
     if (children) {
       let depth = 0;
@@ -179,11 +177,46 @@ class AllocationTree extends React.Component {
     return maxDepth;
   }
 
+  jumpLevel = level => {
+    let treeData = Object.assign([], this.state.treeData);
+    let { path, node } = this.props.selectedNode;
+    
+    this.expandNodes(node, level);
+    treeData = changeNodeAtPath({
+      treeData,
+      path,
+      getNodeKey: ({ treeIndex }) => treeIndex,
+      newNode: node
+    });
+
+    this.setState(state => ({
+      treeData,
+    }));
+  }
+
+  expandNodes = (node, level) => {
+    const { children } = node;
+
+    if (children && level > 0) {
+      children.forEach( child => {
+        const currentLevel = level - 1;
+        this.expandNodes(child, currentLevel);
+        node.expanded = true;
+      });
+    }
+  }
+
   saveTree = () => {
     this.props.saveAllocationTree(this.state.treeData);
   }
 
   toggle = () => {}
+
+  betaGroupToggle = () => { console.log(this.state)
+    this.setState({
+      dropdownBetaGroupOpen: !this.state.dropdownBetaGroupOpen
+    });
+  }
 
   treeButtons = rowInfo => {
     const buttons = [
@@ -205,6 +238,17 @@ class AllocationTree extends React.Component {
     return buttons;
   }
 
+  renderBetaGroupsItems = () => {
+    if (this.props.betaGroups) {
+      return (
+        <DropdownMenu>
+          {this.props.betaGroups.map( betaGroup => <DropdownItem  key ={betaGroup.id}>{betaGroup.name}</DropdownItem>)}
+        </DropdownMenu>
+      );
+    }
+    return null;
+  }
+  
   render () {
     //const getNodeKey = ({ treeIndex }) => treeIndex;
     return (
@@ -223,10 +267,11 @@ class AllocationTree extends React.Component {
             <div className="settings">
               <Input placeholder="Global Set" />
 
-              <Dropdown isOpen={false} toggle={this.toggle}>
+              <Dropdown isOpen={this.state.dropdownBetaGroupOpen} toggle={this.betaGroupToggle}>
                 <DropdownToggle caret>
                   Beta Group1
                 </DropdownToggle>
+                {this.renderBetaGroupsItems()}
               </Dropdown>
             </div>
           </Col>
@@ -274,5 +319,6 @@ const mapStateToProps = state => {
 export default connect( mapStateToProps, {
   getAllocationTree,
   selectNode,
-  saveAllocationTree
+  saveAllocationTree,
+  getBetaGroups,
 } )(AllocationTree);

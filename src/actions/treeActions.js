@@ -1,5 +1,6 @@
 import * as types from './types';
 import allocationModel from '../model/allocationModel';
+import lookupService from '../services/lookupService';
 
 export const getAllocationTree = () => {
   return dispatch => {
@@ -23,4 +24,14 @@ export const selectNode = node => {
   return dispatch => {
     dispatch({ type: types.SELECTED_NODE, node });
   }
+};
+
+export const getBetaGroups = () => {
+  return dispatch => {
+    return lookupService().getBetaGroups().then( betaGroups => {
+      if (betaGroups) {
+        dispatch({ type: types.GET_BETA_GROUPS_SUCCESS, betaGroups });
+      }
+    });
+  };
 };

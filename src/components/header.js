@@ -34,13 +34,17 @@ export default class Header extends React.Component {
               </Dropdown>
             </Col>
 
-            <Col lg="6" md="4" className="test">
+            <Col lg="5" md="5" className="test">
               Plan:
               <Dropdown isOpen={false} toggle={this.toggle}  size="sm">
                 <DropdownToggle caret>
                   Bose Corporation Employees’ Retirement Plan
                 </DropdownToggle>
               </Dropdown>
+
+            </Col>
+            <Col lg="1" md="1">
+              <span className="glyphicon glyphicon-search"></span>
             </Col>
           </Row>
         </Container>

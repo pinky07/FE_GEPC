@@ -6,6 +6,10 @@ export const SAVE_ALLOCATION_ASSETS_FAIL = 'saveAllocationAssetsFail';
 
 export const SELECTED_NODE = 'selectNode';
 
+export const GET_BETA_GROUPS_SUCCESS = 'getBetaGroupsSuccess';
+
+
+
 
 
 
