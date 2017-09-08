@@ -1,24 +1,20 @@
 import React from 'react';
 
 import 'react-contexify/dist/ReactContexify.min.css'
-import 'react-table/react-table.css';
+import 'ag-grid/dist/styles/ag-grid.css';
+import 'ag-grid/dist/styles/theme-fresh.css';
 import './styles/css/app.css';
 
 import Header from './components/header';
 import Content from './components/content';
 
-
-
-class App extends React.Component {
- 
-  render() {
-    return (
-      <div className="App">
-        <Header />
-        <Content />
-      </div>
-    );
-  }
+const App = () => {
+  return (
+    <div className="App">
+      <Header />
+      <Content />
+    </div>
+  );
 }
 
 export default App;

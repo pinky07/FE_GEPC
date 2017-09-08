@@ -10,6 +10,8 @@ import {
   CardTitle
 } from 'reactstrap';
 import ColorPicker from './colorPicker';
+import { updateNode } from '../actions';
+import TreeService from '../services/treeService';
 
 export class NodeDetails extends React.Component {
 
@@ -27,12 +29,22 @@ export class NodeDetails extends React.Component {
 
   componentWillReceiveProps (nextProps) {
     if (nextProps.selectedNode) {
-      let node = Object.assign({}, nextProps.selectedNode.node);
-
+      const { node } = nextProps.selectedNode;
       this.setState({
         node
       });
     }
+  }
+
+  onChangeInput = (event, nodeProp) => {
+    let node = { ...this.state.node };
+    node[nodeProp] = event.target.value;
+    if (nodeProp === 'accountgroupname') {
+      node.title = node.accountgroupname;
+    }
+    this.setState({
+      node
+    });
   }
 
   onChangePolicy(event) {
@@ -42,7 +54,7 @@ export class NodeDetails extends React.Component {
         policy_value: event.target.value
       }
     });
-  }
+  };
 
   onChangeActual(event) {
     this.setState({
@@ -51,11 +63,22 @@ export class NodeDetails extends React.Component {
         actual_mv: event.target.value
       }
     });
-  }
+  };
 
-  renderPolicyValue () {
-    return this.state.node.policy_value ? `${this.state.node.policy_value}%` : '';
-  }
+  isRootNode = () => TreeService().isRootNode(this.props.selectedNode);
+
+  renderPolicyValue = () => this.state.node.policy_value ? `${this.state.node.policy_value}%` : '';
+
+  onBlurTest = () => this.props.updateNode(this.state.node);
+
+  changeColorAssignment = color => {
+    this.setState({
+      node:
+      {...this.state.node,
+        colorAssignment: color,
+      }
+    }, () => this.props.updateNode(this.state.node));
+  };
 
   render () {
   
@@ -68,6 +91,8 @@ export class NodeDetails extends React.Component {
                 <InputGroupAddon>Node Name</InputGroupAddon>
                 <Input
                   value={this.state.node.accountgroupname}
+                  onChange={event => this.onChangeInput(event, 'accountgroupname')}
+                  onBlur={this.onBlurTest}
                 />
               </InputGroup>
               <br />
@@ -76,13 +101,14 @@ export class NodeDetails extends React.Component {
                 <InputGroupAddon>Short Code</InputGroupAddon>
                 <Input
                   value={this.state.node.accountgroupshortname}
+                  disabled={this.isRootNode()}
                 />
               </InputGroup>
               <br />
 
               <InputGroup>
                 <InputGroupAddon>CRM Invest Prod</InputGroupAddon>
-                <Input/>
+                <Input disabled={this.isRootNode()}/>
               </InputGroup>
               <br />
 
@@ -91,6 +117,7 @@ export class NodeDetails extends React.Component {
                 <Input
                   value={this.renderPolicyValue()}
                   onChange={this.onChangePolicy}
+                  disabled={this.isRootNode()}
                 />
               </InputGroup>
               <br />
@@ -100,49 +127,53 @@ export class NodeDetails extends React.Component {
                 <Input
                   value={this.state.node.actual_mv || ''}
                   onChange={this.onChangeActual}
+                  disabled={this.isRootNode()}
                 />
               </InputGroup>
               <br />
 
               <InputGroup>
                 <InputGroupAddon>Assumption</InputGroupAddon>
-                <Input/>
+                <Input disabled={this.isRootNode()}/>
               </InputGroup>
               <br />
 
               <InputGroup>
                 <InputGroupAddon>Return Series</InputGroupAddon>
-                <Input/>
+                <Input disabled={this.isRootNode()}/>
               </InputGroup>
               <br />
 
               <InputGroup>
                 <InputGroupAddon>Color Assignment</InputGroupAddon>
-                <ColorPicker />
+                <ColorPicker
+                  changeColor={this.changeColorAssignment}
+                  disabled={this.isRootNode()}
+                />
               </InputGroup>
               <br />
 
               <InputGroup>
                 <InputGroupAddon>Liquidity</InputGroupAddon>
-                <Input/>
+                <Input disabled={this.isRootNode()}/>
               </InputGroup>
               <br />
 
               <InputGroup>
                 <InputGroupAddon>Active/Pasive</InputGroupAddon>
-                <Input/>
+                <Input disabled={this.isRootNode()}/>
               </InputGroup>
               <br />
 
               <InputGroup>
                 <InputGroupAddon>Expense Ratio</InputGroupAddon>
-                <Input/>
+                <Input disabled={this.isRootNode()}/>
               </InputGroup>
               <br />
 
               <InputGroup>
                 <InputGroupAddon>Cost Basis</InputGroupAddon>
-                <Input/>
+                <Input disabled={this.isRootNode()}/>
               </InputGroup>
           </CardBlock>
         </Card>
@@ -162,4 +193,5 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, null)(NodeDetails);
+export default connect(mapStateToProps,{ updateNode })(NodeDetails);
+

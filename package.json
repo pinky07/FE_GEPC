@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "ag-grid": "^13.0.2",
+    "ag-grid-react": "^13.0.1",
     "axios": "^0.16.2",
     "bootstrap": "^4.0.0-alpha.6",
     "classnames": "^2.2.5",
@@ -19,6 +21,7 @@
     "react-contexify": "^2.0.7",
     "react-data-grid": "^2.0.55",
     "react-dom": "^15.6.1",
+    "react-dom-factories": "^1.0.1",
     "react-redux": "^5.0.6",
     "react-scripts": "1.0.10",
     "react-sortable-tree": "^0.1.21",
@@ -41,6 +44,7 @@
   "devDependencies": {
     "enzyme": "^2.9.1",
     "jest": "^20.0.4",
+    "moxios": "^0.4.0",
     "react-test-renderer": "^15.6.1",
     "redux-devtools-extension": "^2.13.2",
     "sinon": "^3.2.1"

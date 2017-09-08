@@ -4,9 +4,9 @@ import lookupService from '../services/lookupService';
 
 export const getAllocationTree = () => {
   return dispatch => {
-    return allocationModel().getAllocationTree().then( treeData => {
-      if (treeData) {
-        dispatch({ type: types.GET_ALLOCATION_ASSETS_SUCCESS, treeData });
+    return allocationModel().getAllocationTree().then( tree => {
+      if (tree) {
+        dispatch({ type: types.GET_ALLOCATION_ASSETS_SUCCESS, tree });
       }
     });
   };
@@ -26,6 +26,54 @@ export const selectNode = node => {
   }
 };
 
+export const addAboveNode = () => {
+  return dispatch => {
+    dispatch({ type: types.ADD_ABOVE_NODE });
+  }
+};
+
+export const addSiblingNode = () => {
+  return dispatch => {
+    dispatch({ type: types.ADD_SIBLING_NODE });
+  }
+};
+
+export const addBelowNode = () => {
+  return dispatch => {
+    dispatch({ type: types.ADD_BELOW_NODE });
+  }
+};
+
+export const deleteBelowNode = () => {
+  return dispatch => {
+    dispatch({ type: types.DELETE_BELOW_NODE });
+  }
+};
+
+export const deleteNode = node => {
+  return dispatch => {
+    dispatch({ type: types.DELETE_NODE, node });
+  }
+};
+
+export const jumpLevel = level => {
+  return dispatch => {
+    dispatch({ type: types.JUMP_LEVEL, level });
+  }
+};
+
+export const updateTree = treeData => {
+  return dispatch => {
+    dispatch({ type: types.UPDATE_TREE, treeData });
+  }
+};
+
+export const updateNode = node => {
+  return dispatch => {
+    dispatch({ type: types.UPDATE_DETAILS_NODE, node });
+  }
+};
+
 export const getBetaGroups = () => {
   return dispatch => {
     return lookupService().getBetaGroups().then( betaGroups => {
@@ -34,4 +82,10 @@ export const getBetaGroups = () => {
       }
     });
   };
+};
+
+export const selectBetaGroup = betaGroup => {
+  return dispatch => {
+    dispatch({ type: types.SELECTED_BETA_GROUP, betaGroup });
+  }
 };

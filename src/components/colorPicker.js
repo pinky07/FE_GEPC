@@ -1,7 +1,24 @@
 import React from 'react'
 import reactCSS from 'reactcss'
 import { SketchPicker } from 'react-color'
-import Constants from '../services/constants';
+
+const DEFAULT_COLOR_PICKER = '#002060';
+const PRESET_COLORS = [
+  '#a0ac1b',
+  '#4d4e54',
+  '#eeece1',
+  '#d0d68f',
+  '#a0bdc0',
+  '#993300',
+  '#cc9900',
+  '#557d81',
+  '#da7d00',
+  '#fce7b2',
+  '#666635',
+  '#feae0e',
+  '#640000',
+  '#002060',
+];
 
 export default class ColorPicker extends React.Component {
 
@@ -9,31 +26,34 @@ export default class ColorPicker extends React.Component {
     super(props);
     this.state = {
       displayColorPicker: false,
-      background: Constants.colorPickerDefault,
-      presetColors: Constants.presetColors,
+      selectedColor: DEFAULT_COLOR_PICKER,
+      presetColors: PRESET_COLORS,
     };
   }
 
-  handleClick = () => {
-    this.setState({ displayColorPicker: !this.state.displayColorPicker });
+  onClickColorPicker = () => {
+    if (!this.props.disabled) {
+      this.setState({ displayColorPicker: !this.state.displayColorPicker });
+    }
   };
 
-  handleClose = () => {
+  onClose = () => {
+    this.props.changeColor(this.state.selectedColor);
     this.setState({ displayColorPicker: false });
   };
 
-  handleChange = color => {
-    this.setState({ background: color.hex });
+  onChangeColor = color => {
+    this.setState({ selectedColor: color.hex });
   };
 
   renderPicker () {
     if (this.state.displayColorPicker) {
       return (
         <div className="popover">
-          <div className="cover" onClick={ this.handleClose }/>
+          <div className="cover" onClick={ this.onClose }/>
           <SketchPicker
-            color={ this.state.background }
-            onChange={ this.handleChange }
+            color={ this.state.selectedColor }
+            onChange={ this.onChangeColor }
             presetColors={ this.state.presetColors }
           />
         </div>
@@ -47,14 +67,14 @@ export default class ColorPicker extends React.Component {
     const styles = reactCSS({
       'default': {
         color: {
-          background: this.state.background,
+          background: this.state.selectedColor,
         },
       },
     });
 
     return (
       <div className="colorPicker">
-        <div onClick={ this.handleClick }>
+        <div onClick={ this.onClickColorPicker }>
           <div className="color" style={ styles.color } />
         </div>
         { this.renderPicker() }

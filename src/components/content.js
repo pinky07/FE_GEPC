@@ -10,7 +10,7 @@ import {
   NavLink
 } from 'reactstrap';
 import AllocationTree from './allocationTree';
-import AllocationGrid from './allocationGrid';
+import AllocationAgGrid from './allocationAgGrid';
 
 const TREE_VIEW_TAB = '1';
 const GRID_VIEW_TAB = '2';
@@ -34,7 +34,7 @@ export  default class Content extends React.Component {
 
   render () {
     return (
-      <Container className="content">
+      <Container className="content" fluid={true}>
         <Row>
           <Col lg="12" md="12">
             <Nav tabs>
@@ -68,7 +68,7 @@ export  default class Content extends React.Component {
               <TabPane tabId={GRID_VIEW_TAB}>
                 <Row>
                   <Col lg="12">
-                    <AllocationGrid/>
+                    <AllocationAgGrid/>
                   </Col>
                 </Row>
               </TabPane>

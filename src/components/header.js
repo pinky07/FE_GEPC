@@ -8,7 +8,7 @@ import {
 } from 'reactstrap';
 
 export default class Header extends React.Component {
-  
+ 
   toggle = () => {}
 
   render () {
@@ -44,7 +44,7 @@ export default class Header extends React.Component {
 
             </Col>
             <Col lg="1" md="1">
-              <span className="glyphicon glyphicon-search"></span>
+
             </Col>
           </Row>
         </Container>

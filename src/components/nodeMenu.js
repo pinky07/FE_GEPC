@@ -1,6 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import {
+  addAboveNode,
+  addSiblingNode,
+  addBelowNode,
+  deleteBelowNode,
+  deleteNode,
+  jumpLevel,
+} from '../actions';
 import { ContextMenu, Item } from 'react-contexify';
 import { Input } from 'reactstrap';
 
@@ -39,13 +47,13 @@ export class NodeMenu extends React.Component {
   render () {
     return (
       <ContextMenu id='menu_id'>
-        <Item  onClick={this.props.addAbove} disabled={this.isRootNode()}>
+        <Item  onClick={this.props.addAboveNode} disabled={this.isRootNode()}>
           Add a Node Above
         </Item>
-        <Item  onClick={this.props.addSibling} disabled={this.isRootNode()}>
+        <Item  onClick={this.props.addSiblingNode} disabled={this.isRootNode()}>
           Add a Sibling Node
         </Item>
-        <Item onClick={this.props.addBelow}>
+        <Item onClick={this.props.addBelowNode}>
           Add a Node Below
         </Item>
         <Item disabled>
@@ -54,7 +62,7 @@ export class NodeMenu extends React.Component {
         <Item onClick={this.props.deleteNode} disabled={this.isRootNode()}>
           Delete a Node
         </Item>
-        <Item onClick={this.props.deleteBelow} disabled={this.isRootNode()}>
+        <Item onClick={this.props.deleteBelowNode} disabled={this.isRootNode()}>
           Delete the Children Nodes Below
         </Item>
         <Item onClick={() => this.props.jumpLevel(this.state.jumpLevel)} disabled={!this.state.jumpLevel}>
@@ -78,11 +86,6 @@ export class NodeMenu extends React.Component {
 NodeMenu.propTypes = {
   selectedNode: PropTypes.object,
   jumpLevel: PropTypes.func.isRequired,
-  deleteNode: PropTypes.func.isRequired,
-  deleteBelow: PropTypes.func.isRequired,
-  addBelow: PropTypes.func.isRequired,
-  addSibling: PropTypes.func.isRequired,
-  addAbove: PropTypes.func.isRequired,
 };
 
 
@@ -92,4 +95,12 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, null)(NodeMenu);
+export default connect(mapStateToProps,  {
+  addAboveNode,
+  addSiblingNode,
+  addBelowNode,
+  deleteBelowNode,
+  deleteNode,
+  jumpLevel,
+} )(NodeMenu);
+

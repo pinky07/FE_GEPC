@@ -1,5 +1,8 @@
 import allocationService from '../services/allocationService';
-import { getTreeFromFlatData } from 'react-sortable-tree/'
+import {
+  getTreeFromFlatData,
+  getFlatDataFromTree
+} from 'react-sortable-tree/';
 import _ from 'lodash';
 
 const allocationModel = () => {
@@ -15,20 +18,29 @@ const allocationModel = () => {
   
   const getAllocationTree = () => {
     return allocationService().getAllocations().then( allocations => {
-      let list = _.forEach( allocations, item => {
-        item.title = item.accountgroupname;
+      let list = _.forEach( allocations.elements, item => {
+        item.title = item.accountgroupname; //function () { return item.accountgroupname; };
         return item;
       });
-      return _getTree(list);
+
+      return {
+        name: allocations.name,
+        data: _getTree(list),
+        treeData: _getTree(list)
+      };
     });
   };
 
-  const getAllocationGrid = (allocationTree) => {
+  const getAllocationGrid = (treeData) => {
       return new Promise((resolve, reject) => {
         let gridData = [];
-        if (allocationTree && allocationTree.length) {
-          gridData =  allocationTree.slice();
-          setPolicyTotal(gridData[0].children, gridData[0]);
+        if (treeData && treeData.length) {
+          const getNodeKey = ({ treeIndex }) => treeIndex;
+          const flatData = getFlatDataFromTree({treeData, getNodeKey, ignoreCollapsed: false});
+          gridData =  _.map(flatData, item => {
+            item.node.assetCat = 'Equity';
+            return item.node;
+          });
         }
         resolve(gridData);
       });

@@ -5,14 +5,14 @@ import PropTypes from 'prop-types';
 const ExpanderFormatter = createReactClass({
   render() {
     return (
-      <span className="expanderFormatter" title={this.props.value}>
-        {this.props.value}
+      <span title={this.props.value && this.props.value.accountgroupname}>
+        {this.props.value && this.props.value.accountgroupname}
       </span>
     );
   }
 });
 
 ExpanderFormatter.propTypes = {
-  value: PropTypes.string.isRequired,
+  value: PropTypes.object.isRequired,
 };
 export default ExpanderFormatter;

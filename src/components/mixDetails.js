@@ -12,7 +12,7 @@ class MixDetails extends React.Component {
 
   render () {
     return (
-      <div className="nodeDetails">
+      <div className="nodeDetails mixDetails">
         <Card>
           <CardBlock>
             <CardTitle>Mix Details</CardTitle>
