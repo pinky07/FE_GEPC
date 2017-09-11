@@ -118,14 +118,13 @@ const treeService = () => {
         const currentLevel = level - 1;
         _expandNodes(child, currentLevel);
         node.expanded = true;
-        console.log(node.title)
       });
     }
   };
 
   const jumpLevel = (level, {treeData, selectedNode}) => {
     const { path, node } = selectedNode;
-
+    console.log(path)
     _expandNodes(node, level);
     return changeNodeAtPath({
       treeData,

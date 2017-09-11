@@ -1,3 +1,4 @@
+import axios from 'axios';
 import plans from '../mockData/plans.json';
 import clients from '../mockData/clients.json';
 import allocations from '../mockData/allocations.json';
@@ -22,6 +23,7 @@ const allocationService = () => {
   };
 
   const getAllocations = () => {
+    //return axios.get(`http://localhost:8080${constants.API}/allocations/${clientId}/${planId}/${segmentId}/`);
     return new Promise((resolve, reject) => {
       resolve(allocations);
     });

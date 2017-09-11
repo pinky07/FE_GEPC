@@ -19,14 +19,13 @@ const allocationModel = () => {
   const getAllocationTree = () => {
     return allocationService().getAllocations().then( allocations => {
       let list = _.forEach( allocations.elements, item => {
-        item.title = item.accountgroupname; //function () { return item.accountgroupname; };
+        item.title = item.accountgroupname;
         return item;
       });
 
       return {
         name: allocations.name,
         data: _getTree(list),
-        treeData: _getTree(list)
       };
     });
   };

@@ -4,7 +4,7 @@ export const GET_ALLOCATION_ASSETS_FAIL = 'getAllocationAssetsFail';
 export const SAVE_ALLOCATION_ASSETS_SUCCESS = 'saveAllocationAssetsSuccess';
 export const SAVE_ALLOCATION_ASSETS_FAIL = 'saveAllocationAssetsFail';
 
-export const UPDATE_TREE = 'updateTree';
+export const CHANGE_TREE = 'updateTree';
 
 export const SELECTED_NODE = 'selectNode';
 export const ADD_ABOVE_NODE = 'addAboveNode';

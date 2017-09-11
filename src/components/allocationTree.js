@@ -113,7 +113,6 @@ AllocationTree.defaultProps = {
     name: '',
     data: []
   },
-  treeData: [],
 };
 
 const mapStateToProps = state => {

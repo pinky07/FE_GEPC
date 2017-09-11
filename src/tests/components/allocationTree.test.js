@@ -8,7 +8,6 @@ const props = {
     name: '',
     data: []
   },
-  treeData: [],
   selectedNode: {},
 };
 

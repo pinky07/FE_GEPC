@@ -64,7 +64,7 @@ export const jumpLevel = level => {
 
 export const updateTree = treeData => {
   return dispatch => {
-    dispatch({ type: types.UPDATE_TREE, treeData });
+    dispatch({ type: types.CHANGE_TREE, treeData });
   }
 };
 
