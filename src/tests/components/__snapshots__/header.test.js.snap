@@ -1,0 +1,221 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`header component renders correctly 1`] = `
+<Header>
+  <div
+    className="app-header"
+  >
+    <Container
+      tag="div"
+    >
+      <div
+        className="container"
+      >
+        <Row
+          tag="div"
+        >
+          <div
+            className="row"
+          >
+            <Col
+              className="test"
+              lg="4"
+              md="4"
+              tag="div"
+              widths={
+                Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ]
+              }
+            >
+              <div
+                className="test col col-md-4 col-lg-4"
+              >
+                Segment:
+                <Dropdown
+                  isOpen={false}
+                  size="sm"
+                  tag="div"
+                  toggle={[Function]}
+                >
+                  <div
+                    className="btn-group-sm dropdown"
+                  >
+                    <DropdownToggle
+                      aria-haspopup={true}
+                      caret={true}
+                      color="secondary"
+                      data-toggle="dropdown"
+                    >
+                      <Button
+                        aria-expanded={false}
+                        aria-haspopup="true"
+                        className="dropdown-toggle"
+                        color="secondary"
+                        data-toggle="dropdown"
+                        onClick={[Function]}
+                        tag="button"
+                      >
+                        <button
+                          aria-expanded={false}
+                          aria-haspopup="true"
+                          className="dropdown-toggle btn btn-secondary"
+                          data-toggle="dropdown"
+                          onClick={[Function]}
+                          type="button"
+                        >
+                          Segment 1
+                        </button>
+                      </Button>
+                    </DropdownToggle>
+                  </div>
+                </Dropdown>
+              </div>
+            </Col>
+            <Col
+              className="test"
+              lg="2"
+              md="2"
+              tag="div"
+              widths={
+                Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ]
+              }
+            >
+              <div
+                className="test col col-md-2 col-lg-2"
+              >
+                Client:
+                <Dropdown
+                  isOpen={false}
+                  size="sm"
+                  tag="div"
+                  toggle={[Function]}
+                >
+                  <div
+                    className="btn-group-sm dropdown"
+                  >
+                    <DropdownToggle
+                      aria-haspopup={true}
+                      caret={true}
+                      color="secondary"
+                      data-toggle="dropdown"
+                    >
+                      <Button
+                        aria-expanded={false}
+                        aria-haspopup="true"
+                        className="dropdown-toggle"
+                        color="secondary"
+                        data-toggle="dropdown"
+                        onClick={[Function]}
+                        tag="button"
+                      >
+                        <button
+                          aria-expanded={false}
+                          aria-haspopup="true"
+                          className="dropdown-toggle btn btn-secondary"
+                          data-toggle="dropdown"
+                          onClick={[Function]}
+                          type="button"
+                        >
+                          Bose
+                        </button>
+                      </Button>
+                    </DropdownToggle>
+                  </div>
+                </Dropdown>
+              </div>
+            </Col>
+            <Col
+              className="test"
+              lg="5"
+              md="5"
+              tag="div"
+              widths={
+                Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ]
+              }
+            >
+              <div
+                className="test col col-md-5 col-lg-5"
+              >
+                Plan:
+                <Dropdown
+                  isOpen={false}
+                  size="sm"
+                  tag="div"
+                  toggle={[Function]}
+                >
+                  <div
+                    className="btn-group-sm dropdown"
+                  >
+                    <DropdownToggle
+                      aria-haspopup={true}
+                      caret={true}
+                      color="secondary"
+                      data-toggle="dropdown"
+                    >
+                      <Button
+                        aria-expanded={false}
+                        aria-haspopup="true"
+                        className="dropdown-toggle"
+                        color="secondary"
+                        data-toggle="dropdown"
+                        onClick={[Function]}
+                        tag="button"
+                      >
+                        <button
+                          aria-expanded={false}
+                          aria-haspopup="true"
+                          className="dropdown-toggle btn btn-secondary"
+                          data-toggle="dropdown"
+                          onClick={[Function]}
+                          type="button"
+                        >
+                          Bose Corporation Employees’ Retirement Plan
+                        </button>
+                      </Button>
+                    </DropdownToggle>
+                  </div>
+                </Dropdown>
+              </div>
+            </Col>
+            <Col
+              lg="1"
+              md="1"
+              tag="div"
+              widths={
+                Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ]
+              }
+            >
+              <div
+                className="col col-md-1 col-lg-1"
+              />
+            </Col>
+          </div>
+        </Row>
+      </div>
+    </Container>
+  </div>
+</Header>
+`;

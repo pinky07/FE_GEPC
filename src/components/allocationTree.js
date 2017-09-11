@@ -8,7 +8,7 @@ import {
   Input,
 } from 'reactstrap';
 import SortableTree from 'react-sortable-tree';
-import { 
+import {
   getAllocationTree,
   saveAllocationTree,
   selectNode,
@@ -21,22 +21,22 @@ import NodeDetails from './nodeDetails';
 import BetaGroupDropdown from './betaGroupDropdown';
 import TreeNodeRenderer from './treeNodeRenderer';
 
-class AllocationTree extends React.Component {
-  
+export class AllocationTree extends React.Component {
+
   componentDidMount () {
     this.props.getAllocationTree();
   }
 
   componentWillReceiveProps (nextProps) {
-    if (nextProps.treeData !== this.props.treeData) {
+    if (nextProps.tree !== this.props.tree) {
       if (!this.props.selectedNode) {
-        this.props.selectNode({ node: nextProps.treeData[0] });
+        this.props.selectNode({ node: nextProps.tree.data[0] });
       }
     }
   }
 
   saveTree = () => {
-    this.props.saveAllocationTree(this.props.treeData);
+    this.props.saveAllocationTree(this.props.tree);
   }
 
   treeButtons = rowInfo => {
@@ -60,11 +60,12 @@ class AllocationTree extends React.Component {
   }
 
   render () {
+    const { tree } = this.props;
     return (
       <div className="allocationTree">
         <Row className="treeHeader">
           <Col lg="3" md="3" sm="12" xs="12">
-            <h5>{this.props.tree.name}</h5>
+            <h5>{tree.name}</h5>
           </Col>
 
           <Col lg="5" md="5" sm="12" xs="12">
@@ -83,7 +84,7 @@ class AllocationTree extends React.Component {
         <Row>
           <Col lg="8" md="8" sm="12" className="treecontainer">
             <SortableTree
-              treeData={this.props.treeData}
+              treeData={tree.data}
               onChange={treeData => this.props.updateTree(treeData)}
               canDrop={ ({ nextPath }) => nextPath.length > 1}
               maxDepth={Constants.MAX_TREE_DEPTH}
@@ -104,9 +105,15 @@ class AllocationTree extends React.Component {
 }
 
 AllocationTree.propTypes = {
-  treeData: PropTypes.array.isRequired,
-  treeName: PropTypes.string.isRequired,
   tree: PropTypes.object.isRequired,
+};
+
+AllocationTree.defaultProps = {
+  tree: {
+    name: '',
+    data: []
+  },
+  treeData: [],
 };
 
 const mapStateToProps = state => {

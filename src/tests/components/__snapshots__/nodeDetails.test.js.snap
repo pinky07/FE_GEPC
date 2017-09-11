@@ -1,0 +1,206 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`nodeDetails component renders correctly 1`] = `
+<div
+  className="nodeDetails"
+>
+  <Card
+    tag="div"
+  >
+    <CardBlock
+      tag="div"
+    >
+      <CardTitle
+        tag="h4"
+      >
+        Node Details
+      </CardTitle>
+      <InputGroup
+        tag="div"
+      >
+        <InputGroupAddon
+          tag="div"
+        >
+          Node Name
+        </InputGroupAddon>
+        <Input
+          onBlur={[Function]}
+          onChange={[Function]}
+          tag="p"
+          type="text"
+          value="test selected node"
+        />
+      </InputGroup>
+      <br />
+      <InputGroup
+        tag="div"
+      >
+        <InputGroupAddon
+          tag="div"
+        >
+          Short Code
+        </InputGroupAddon>
+        <Input
+          disabled={false}
+          tag="p"
+          type="text"
+          value="abc"
+        />
+      </InputGroup>
+      <br />
+      <InputGroup
+        tag="div"
+      >
+        <InputGroupAddon
+          tag="div"
+        >
+          CRM Invest Prod
+        </InputGroupAddon>
+        <Input
+          disabled={false}
+          tag="p"
+          type="text"
+        />
+      </InputGroup>
+      <br />
+      <InputGroup
+        tag="div"
+      >
+        <InputGroupAddon
+          tag="div"
+        >
+          Policy Weight
+        </InputGroupAddon>
+        <Input
+          disabled={false}
+          onChange={[Function]}
+          tag="p"
+          type="text"
+          value="100%"
+        />
+      </InputGroup>
+      <br />
+      <InputGroup
+        tag="div"
+      >
+        <InputGroupAddon
+          tag="div"
+        >
+          Actual MV
+        </InputGroupAddon>
+        <Input
+          disabled={false}
+          onChange={[Function]}
+          tag="p"
+          type="text"
+          value="0.8"
+        />
+      </InputGroup>
+      <br />
+      <InputGroup
+        tag="div"
+      >
+        <InputGroupAddon
+          tag="div"
+        >
+          Assumption
+        </InputGroupAddon>
+        <Input
+          disabled={false}
+          tag="p"
+          type="text"
+        />
+      </InputGroup>
+      <br />
+      <InputGroup
+        tag="div"
+      >
+        <InputGroupAddon
+          tag="div"
+        >
+          Return Series
+        </InputGroupAddon>
+        <Input
+          disabled={false}
+          tag="p"
+          type="text"
+        />
+      </InputGroup>
+      <br />
+      <InputGroup
+        tag="div"
+      >
+        <InputGroupAddon
+          tag="div"
+        >
+          Color Assignment
+        </InputGroupAddon>
+        <ColorPicker
+          changeColor={[Function]}
+          disabled={false}
+        />
+      </InputGroup>
+      <br />
+      <InputGroup
+        tag="div"
+      >
+        <InputGroupAddon
+          tag="div"
+        >
+          Liquidity
+        </InputGroupAddon>
+        <Input
+          disabled={false}
+          tag="p"
+          type="text"
+        />
+      </InputGroup>
+      <br />
+      <InputGroup
+        tag="div"
+      >
+        <InputGroupAddon
+          tag="div"
+        >
+          Active/Pasive
+        </InputGroupAddon>
+        <Input
+          disabled={false}
+          tag="p"
+          type="text"
+        />
+      </InputGroup>
+      <br />
+      <InputGroup
+        tag="div"
+      >
+        <InputGroupAddon
+          tag="div"
+        >
+          Expense Ratio
+        </InputGroupAddon>
+        <Input
+          disabled={false}
+          tag="p"
+          type="text"
+        />
+      </InputGroup>
+      <br />
+      <InputGroup
+        tag="div"
+      >
+        <InputGroupAddon
+          tag="div"
+        >
+          Cost Basis
+        </InputGroupAddon>
+        <Input
+          disabled={false}
+          tag="p"
+          type="text"
+        />
+      </InputGroup>
+    </CardBlock>
+  </Card>
+</div>
+`;

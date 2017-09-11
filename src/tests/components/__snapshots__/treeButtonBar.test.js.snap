@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`treeButtonBar component renders correctly 1`] = `
+<TreeButtonBar
+  save={[Function]}
+>
+  <span
+    className="buttonBar"
+  >
+    <Button
+      color="primary"
+      tag="button"
+    >
+      <button
+        className="btn btn-primary"
+        onClick={[Function]}
+      >
+        New
+      </button>
+    </Button>
+    <Button
+      color="primary"
+      tag="button"
+    >
+      <button
+        className="btn btn-primary"
+        onClick={[Function]}
+      >
+        Load
+      </button>
+    </Button>
+    <Button
+      color="primary"
+      onClick={[Function]}
+      tag="button"
+    >
+      <button
+        className="btn btn-primary"
+        onClick={[Function]}
+        type="button"
+      >
+        Save
+      </button>
+    </Button>
+    <Button
+      color="primary"
+      tag="button"
+    >
+      <button
+        className="btn btn-primary"
+        onClick={[Function]}
+      >
+        Copy
+      </button>
+    </Button>
+    <Button
+      color="primary"
+      tag="button"
+    >
+      <button
+        className="btn btn-primary"
+        onClick={[Function]}
+      >
+        Delete
+      </button>
+    </Button>
+  </span>
+</TreeButtonBar>
+`;

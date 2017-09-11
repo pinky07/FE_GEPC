@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`nodeMenu component renders correctly 1`] = `
+<ContextMenu
+  animation={null}
+  id="menu_id"
+  theme={null}
+>
+  <Item
+    data={null}
+    disabled={false}
+    leftIcon=""
+    onClick={[Function]}
+    refsFromProvider={Array []}
+    rightIcon=""
+    targetNode={Object {}}
+  >
+    Add a Node Above
+  </Item>
+  <Item
+    data={null}
+    disabled={false}
+    leftIcon=""
+    onClick={[Function]}
+    refsFromProvider={Array []}
+    rightIcon=""
+    targetNode={Object {}}
+  >
+    Add a Sibling Node
+  </Item>
+  <Item
+    data={null}
+    disabled={false}
+    leftIcon=""
+    onClick={[Function]}
+    refsFromProvider={Array []}
+    rightIcon=""
+    targetNode={Object {}}
+  >
+    Add a Node Below
+  </Item>
+  <Item
+    data={null}
+    disabled={true}
+    leftIcon=""
+    onClick={[Function]}
+    refsFromProvider={Array []}
+    rightIcon=""
+    targetNode={Object {}}
+  >
+    Copy a Node
+  </Item>
+  <Item
+    data={null}
+    disabled={false}
+    leftIcon=""
+    onClick={[Function]}
+    refsFromProvider={Array []}
+    rightIcon=""
+    targetNode={Object {}}
+  >
+    Delete a Node
+  </Item>
+  <Item
+    data={null}
+    disabled={false}
+    leftIcon=""
+    onClick={[Function]}
+    refsFromProvider={Array []}
+    rightIcon=""
+    targetNode={Object {}}
+  >
+    Delete the Children Nodes Below
+  </Item>
+  <Item
+    data={null}
+    disabled={true}
+    leftIcon=""
+    onClick={[Function]}
+    refsFromProvider={Array []}
+    rightIcon=""
+    targetNode={Object {}}
+  >
+    <div
+      className="nodeMenu"
+    >
+      <span>
+        Jump Node Level
+      </span>
+      <Input
+        min="1"
+        onChange={[Function]}
+        onClick={[Function]}
+        step="1"
+        tag="p"
+        type="number"
+        value={0}
+      />
+    </div>
+  </Item>
+</ContextMenu>
+`;

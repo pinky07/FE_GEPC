@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`content component renders correctly 1`] = `
+<Container
+  className="content"
+  fluid={true}
+  tag="div"
+>
+  <Row
+    tag="div"
+  >
+    <Col
+      lg="12"
+      md="12"
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <Nav
+        tabs={true}
+        tag="ul"
+      >
+        <NavItem
+          tag="li"
+        >
+          <NavLink
+            className="active"
+            onClick={[Function]}
+            tag="a"
+          >
+            Tree View
+          </NavLink>
+        </NavItem>
+        <NavItem
+          tag="li"
+        >
+          <NavLink
+            className=""
+            onClick={[Function]}
+            tag="a"
+          >
+            Grid View
+          </NavLink>
+        </NavItem>
+      </Nav>
+      <TabContent
+        activeTab="1"
+        tag="div"
+      >
+        <TabPane
+          tabId="1"
+          tag="div"
+        >
+          <Row
+            tag="div"
+          >
+            <Col
+              lg="12"
+              tag="div"
+              widths={
+                Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ]
+              }
+            >
+              <Connect(AllocationTree) />
+            </Col>
+          </Row>
+        </TabPane>
+        <TabPane
+          tabId="2"
+          tag="div"
+        >
+          <Row
+            tag="div"
+          >
+            <Col
+              lg="12"
+              tag="div"
+              widths={
+                Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ]
+              }
+            >
+              <Connect(Aggrid) />
+            </Col>
+          </Row>
+        </TabPane>
+      </TabContent>
+    </Col>
+  </Row>
+</Container>
+`;
