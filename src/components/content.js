@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import {
   Row,
   Col,
@@ -9,13 +11,13 @@ import {
   NavItem,
   NavLink
 } from 'reactstrap';
-import AllocationTree from './allocationTree';
-import AllocationAgGrid from './allocationAgGrid';
+import AllocationTree from './treeView/allocationTree';
+import AllocationAgGrid from './gridView/allocationAgGrid';
 
 const TREE_VIEW_TAB = '1';
 const GRID_VIEW_TAB = '2';
 
-export  default class Content extends React.Component {
+export class Content extends React.Component {
 
   constructor(props) {
     super(props);
@@ -35,6 +37,7 @@ export  default class Content extends React.Component {
   render () {
     return (
       <Container className="content" fluid={true}>
+        {this.props.isLoading ? <div className="loader"></div> : null}
         <Row>
           <Col lg="12" md="12">
             <Nav tabs>
@@ -46,7 +49,7 @@ export  default class Content extends React.Component {
                   Tree View
                 </NavLink>
               </NavItem>
-              
+
               <NavItem>
                 <NavLink
                   className={this.state.activeTab === GRID_VIEW_TAB ? 'active' : ''}
@@ -80,3 +83,19 @@ export  default class Content extends React.Component {
     );
   }
 }
+
+Content.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
+};
+
+Content.defaultProps = {
+  isLoading: false
+};
+
+const mapStateToProps = state => {
+  return {
+    ...state.shared
+  };
+};
+
+export default connect( mapStateToProps, null )(Content);

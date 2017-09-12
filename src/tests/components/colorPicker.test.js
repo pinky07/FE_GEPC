@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount  } from 'enzyme';
 import toJSON from 'enzyme-to-json';
-import ColorPicker from '../../components/colorPicker';
+import ColorPicker from '../../components/treeView/colorPicker';
 
 describe('colorPicker component', () => {
   let wrapper = mount (<ColorPicker/>);

@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow  } from 'enzyme';
 import toJSON from 'enzyme-to-json';
-import { NodeDetails } from '../../components/nodeDetails';
+import { NodeDetails } from '../../components/treeView/nodeDetails';
 
 const props = {
   selectedNode: {

@@ -10,7 +10,7 @@ import {
 import {
   getBetaGroups,
   selectBetaGroup,
-} from '../actions';
+} from '../../actions';
 
 export class BetaGroupDropdown extends React.Component {
 

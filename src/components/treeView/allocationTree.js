@@ -13,8 +13,8 @@ import {
   saveAllocationTree,
   selectNode,
   updateTree,
-} from '../actions';
-import Constants from '../services/constants';
+} from '../../actions';
+import Constants from '../../services/constants';
 import NodeMenu from './nodeMenu';
 import TreeButtonBar from './treeButtonBar';
 import NodeDetails from './nodeDetails';

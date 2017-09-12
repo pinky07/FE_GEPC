@@ -8,9 +8,10 @@ import {
   deleteBelowNode,
   deleteNode,
   jumpLevel,
-} from '../actions';
+} from '../../actions';
 import { ContextMenu, Item } from 'react-contexify';
 import { Input } from 'reactstrap';
+import TreeService from '../../services/treeService';
 
 export class NodeMenu extends React.Component {
 
@@ -29,9 +30,7 @@ export class NodeMenu extends React.Component {
     }
   }
 
-  isRootNode = () => {
-    return this.props.selectedNode && this.props.selectedNode.treeIndex === 0;
-  }
+  isRootNode = () => TreeService().isRootNode(this.props.selectedNode);
 
   onChangeInput = event => {
     const max = this.props.selectedNode.maxDepth;
@@ -42,6 +41,13 @@ export class NodeMenu extends React.Component {
     this.setState({
       jumpLevel
     });
+  }
+
+  onKeyDown = event => {
+    const enterKey = 13;
+    if(event.keyCode === enterKey){
+      this.props.jumpLevel(this.state.jumpLevel);
+    }
   }
 
   render () {
@@ -75,6 +81,8 @@ export class NodeMenu extends React.Component {
                    value={this.state.jumpLevel}
                    onClick={event => event.stopPropagation()}
                    onChange={this.onChangeInput}
+                   onKeyDown={this.onKeyDown}
+
             />
           </div>
         </Item>

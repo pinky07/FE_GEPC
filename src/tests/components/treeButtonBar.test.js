@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount  } from 'enzyme';
 import toJSON from 'enzyme-to-json';
-import TreeButtonBar from '../../components/treeButtonBar';
+import TreeButtonBar from '../../components/treeView/treeButtonBar';
 
 describe('treeButtonBar component', () => {
   const props = {

@@ -1,3 +1,6 @@
+export const SHOW_LOADING = 'showLoading';
+export const HIDE_LOADING = 'hideLoading';
+
 export const GET_ALLOCATION_ASSETS_SUCCESS = 'getAllocationAssetsSuccess';
 export const GET_ALLOCATION_ASSETS_FAIL = 'getAllocationAssetsFail';
 

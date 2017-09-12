@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`allocationTree component renders correctly 1`] = `
+<div
+  className="allocationTree"
+>
+  <Row
+    className="treeHeader"
+    tag="div"
+  >
+    <Col
+      lg="3"
+      md="3"
+      sm="12"
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+      xs="12"
+    >
+      <h5 />
+    </Col>
+    <Col
+      lg="5"
+      md="5"
+      sm="12"
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+      xs="12"
+    >
+      <TreeButtonBar
+        save={[Function]}
+      />
+    </Col>
+    <Col
+      lg="4"
+      md="4"
+      sm="12"
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+      xs="12"
+    >
+      <div
+        className="settings"
+      >
+        <Input
+          placeholder="Global Set"
+          tag="p"
+          type="text"
+        />
+        <Connect(BetaGroupDropdown) />
+      </div>
+    </Col>
+  </Row>
+  <Row
+    tag="div"
+  >
+    <Col
+      className="treecontainer"
+      lg="8"
+      md="8"
+      sm="12"
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <DragDropContext(ReactSortableTree)
+        canDrop={[Function]}
+        generateNodeProps={[Function]}
+        maxDepth={10}
+        nodeContentRenderer={[Function]}
+        onChange={[Function]}
+        treeData={Array []}
+      />
+      <Connect(NodeMenu) />
+    </Col>
+    <Col
+      lg="4"
+      md="4"
+      sm="12"
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <Connect(NodeDetails) />
+    </Col>
+  </Row>
+</div>
+`;

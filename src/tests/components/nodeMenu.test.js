@@ -1,7 +1,7 @@
 import React from 'react';
-import { shallow  } from 'enzyme';
+import { shallow, mount  } from 'enzyme';
 import toJSON from 'enzyme-to-json';
-import { NodeMenu } from '../../components/nodeMenu';
+import { NodeMenu } from '../../components/treeView/nodeMenu';
 
 let props = {
   selectedNode: {
@@ -10,7 +10,7 @@ let props = {
     accountgroupshortname: 'abc',
     accountgroupname: 'test selected node'
   },
-  jumpLevel: function () {},
+  jumpLevel: jest.fn(),
   deleteNode: jest.fn(),
   deleteBelowNode: jest.fn(),
   addBelowNode: jest.fn(),
@@ -29,7 +29,10 @@ describe('nodeMenu component', () => {
     let wrapper = shallow(<NodeMenu {...props}/>);
 
     it ('the first item should call the addAboveNode function', () => {
-      wrapper.find('Item').at(0).simulate('click');
+     // console.log(wrapper.debug())
+      wrapper.find('Item').filterWhere(n => n.contains('Above')).simulate('click');
+      console.log(wrapper.find('Item').at(0).debug())
+      //wrapper.find('Item').at(0).simulate('click');
       expect(props.addAboveNode).toHaveBeenCalled();
     });
 

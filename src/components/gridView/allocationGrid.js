@@ -8,11 +8,11 @@ import {
 import ReactDataGrid from 'react-data-grid';
 import update from 'immutability-helper';
 import RowRenderer from './rowRenderer';
-import allocationModel from '../model/allocationModel';
+import allocationModel from '../../model/allocationModel';
 import ExpanderFormatter from './colNameFormatter';
 import MixDetails from './mixDetails';
 import MixStatistics from './mixStatistics';
-import BetaGroupDropdown from './betaGroupDropdown';
+import BetaGroupDropdown from '../treeView/betaGroupDropdown';
 
 let columns = [
   {

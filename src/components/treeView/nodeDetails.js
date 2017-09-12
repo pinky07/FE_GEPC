@@ -10,8 +10,8 @@ import {
   CardTitle
 } from 'reactstrap';
 import ColorPicker from './colorPicker';
-import { updateNode } from '../actions';
-import TreeService from '../services/treeService';
+import { updateNode } from '../../actions';
+import TreeService from '../../services/treeService';
 
 export class NodeDetails extends React.Component {
 

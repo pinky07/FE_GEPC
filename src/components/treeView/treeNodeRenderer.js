@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { isDescendant } from 'react-sortable-tree';
-import Constants from '../services/constants';
+import Constants from '../../services/constants';
 
 class TreeNodeRenderer extends Component {
   render() { 
