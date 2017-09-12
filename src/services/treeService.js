@@ -1,14 +1,14 @@
 import {
   removeNodeAtPath,
   addNodeUnderParent,
-  changeNodeAtPath
+  changeNodeAtPath,
 } from 'react-sortable-tree';
 
 const treeService = () => {
 
   const _newNode = ({ clientName, planName }) => {
     const DEFAULT_NODE_NAME = 'Node';
-    const newNode = {
+    let newNode = {
       clientname: clientName,
       planname: planName,
       accountgrouptype: '',
@@ -28,22 +28,22 @@ const treeService = () => {
     return newNode;
   }
 
-  const updateNode = (treeData, selectedNode) => {
+  const updateNode = (tree, selectedNode) => {
     const { path, node } = selectedNode;
 
     return changeNodeAtPath({
-      treeData,
+      treeData: tree.data,
       path,
       getNodeKey: ({ treeIndex }) => treeIndex,
       newNode: node,
     });
   };
-  
-  const addAboveNode = ({ treeData, selectedNode }) => {
+
+  const addAboveNode = ({ tree, selectedNode }) => {
     const { path, node } = selectedNode;
 
     return changeNodeAtPath({
-      treeData,
+      treeData: tree.data,
       path,
       getNodeKey: ({ treeIndex }) => treeIndex,
       newNode: {
@@ -54,11 +54,11 @@ const treeService = () => {
     });
   };
 
-  const addSiblingNode = ({ treeData, selectedNode }) => {
+  const addSiblingNode = ({ tree, selectedNode }) => {
     const { node, path } = selectedNode;
 
     return addNodeUnderParent({
-      treeData,
+      treeData: tree.data,
       parentKey: path[path.length - 2],
       expandParent: true,
       getNodeKey: ({ treeIndex }) => treeIndex,
@@ -66,11 +66,11 @@ const treeService = () => {
     }).treeData;
   };
 
-  const addBelowNode = ({ treeData, selectedNode }) => {
+  const addBelowNode = ({ tree, selectedNode }) => {
     let { node, path } = selectedNode;
 
     return addNodeUnderParent({
-      treeData,
+      treeData: tree.data,
       parentKey: path[path.length - 1],
       expandParent: true,
       getNodeKey: ({ treeIndex }) => treeIndex,
@@ -81,30 +81,30 @@ const treeService = () => {
     }).treeData;
   };
 
-  const deleteBelowNode = ({ treeData, selectedNode }) => {
+  const deleteBelowNode = ({ tree, selectedNode }) => {
     let { path, node, treeIndex } = selectedNode;
 
     if (node.children) {
       let firstChildPath = treeIndex + 1;
       let childrenPath = path.concat([firstChildPath]);
-      let tree = Array.from(treeData);
+      let treeData = Array.from(tree.data);
 
       for (let i = 0, length = node.children.length; i < length; i++) {
-        tree = changeNodeAtPath({
-          treeData: tree,
+        treeData = changeNodeAtPath({
+          treeData,
           path: childrenPath,
           getNodeKey: ({ treeIndex }) => treeIndex,
           newNode: null,
         });
       }
-      return tree;
+      return treeData;
     }
   };
 
-  const deleteNode = ({ treeData, selectedNode }) => {
-    let { path } = selectedNode;
+  const deleteNode = ({ tree, selectedNode }) => {
+    const { path } = selectedNode;
     return removeNodeAtPath({
-      treeData,
+      treeData: tree.data,
       path,
       getNodeKey: ({ treeIndex }) => treeIndex
     });
@@ -113,26 +113,17 @@ const treeService = () => {
   const _expandNodes = (node, level) => {
     const { children } = node;
 
-    if (children && level > 0) {
-      children.forEach( child => {
-        const currentLevel = level - 1;
-        _expandNodes(child, currentLevel);
-        node.expanded = true;
+    if (children && level > 1) {
+      children.forEach( (child, index, array) => {
+        array[index] = _expandNodes(child, level - 1);
       });
     }
+    return children ? { ...node, expanded: true } : node;
   };
 
-  const jumpLevel = (level, {treeData, selectedNode}) => {
-    const { path, node } = selectedNode;
-    console.log(path)
-    _expandNodes(node, level);
-    return changeNodeAtPath({
-      treeData,
-      path,
-      getNodeKey: ({ treeIndex }) => treeIndex,
-      newNode: node,
-      ignoreCollapsed: false
-    });
+  const jumpLevel = (level, {tree, selectedNode }) => {
+    let node = _expandNodes (selectedNode.node, level);
+    return updateNode(tree, { ...selectedNode, node });
   };
 
   const getMaxDepthNode = ({ children }) => {
@@ -146,7 +137,7 @@ const treeService = () => {
     }
     return maxDepth;
   };
-  
+
   const isRootNode = node => node && node.treeIndex === 0;
 
   return {
