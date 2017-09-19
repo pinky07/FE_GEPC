@@ -5,7 +5,7 @@ import {
   Col,
 } from 'reactstrap';
 import {AgGridReact} from "ag-grid-react";
-import allocationModel from '../../model/allocationModel';
+import allocationModel from '../../model/treeModel';
 import MixDetails from './mixDetails';
 import MixStatistics from './mixStatistics';
 

@@ -29,10 +29,7 @@ describe('nodeMenu component', () => {
     let wrapper = shallow(<NodeMenu {...props}/>);
 
     it ('the first item should call the addAboveNode function', () => {
-     // console.log(wrapper.debug())
-      wrapper.find('Item').filterWhere(n => n.contains('Above')).simulate('click');
-      console.log(wrapper.find('Item').at(0).debug())
-      //wrapper.find('Item').at(0).simulate('click');
+       wrapper.find('Item').at(0).simulate('click');
       expect(props.addAboveNode).toHaveBeenCalled();
     });
 

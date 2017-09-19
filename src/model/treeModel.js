@@ -1,11 +1,11 @@
-import allocationService from '../services/allocationService';
+import assetAllocationService from '../services/assetAllocationService';
 import {
   getTreeFromFlatData,
   getFlatDataFromTree
 } from 'react-sortable-tree/';
 import _ from 'lodash';
 
-const allocationModel = () => {
+const treeModel = () => {
 
   const _getTree = allocations => {
     const argDefaults = {
@@ -16,8 +16,8 @@ const allocationModel = () => {
     return getTreeFromFlatData({...argDefaults, flatData: allocations});
   };
   
-  const getAllocationTree = () => {
-    return allocationService().getAllocations().then( allocations => {
+  const getTree = () => {
+    return assetAllocationService().getAllocations().then( allocations => {
       let list = _.forEach( allocations.elements, item => {
         item.title = item.accountgroupname;
         return item;
@@ -60,17 +60,17 @@ const allocationModel = () => {
     });
   }
 
-  const saveAllocationTree = treeData => {
-    return allocationService().saveAllocations(treeData).then(() => {
+  const saveTree = treeData => {
+    return assetAllocationService().saveAllocations(treeData).then(() => {
       console.log(treeData);
     });
   }
 
   return {
-    getAllocationTree,
-    saveAllocationTree,
+    getTree,
+    saveTree,
     getAllocationGrid,
   };
 }
 
-export default allocationModel;
+export default treeModel;

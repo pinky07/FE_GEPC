@@ -1,5 +1,5 @@
 import { fakeServer } from 'sinon';
-import allocationService from '../../services/allocationService';
+import allocationService from '../../services/assetAllocationService';
 import allocations from '../../mockData/allocations.json';
 
 describe('allocation service', () => {

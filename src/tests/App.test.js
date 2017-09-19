@@ -1,15 +1,12 @@
 import React from 'react';
 import { shallow  } from 'enzyme';
+import toJSON from 'enzyme-to-json';
 import App from '../App';
 
 describe('app component', () => {
-  let app = shallow(<App/>);
+  let wrapper = shallow(<App/>);
 
-  it ('renders the header', () => {
-    expect(app.find('Header').exists()).toBe(true);
-  });
-
-  it ('renders the content', () => {
-    expect(app.find('Content').exists()).toBe(true);
+  it ('renders correctly', () => {
+    expect(toJSON(wrapper)).toMatchSnapshot();
   });
 });

@@ -91,6 +91,7 @@ exports[`nodeMenu component renders correctly 1`] = `
         min="1"
         onChange={[Function]}
         onClick={[Function]}
+        onKeyDown={[Function]}
         step="1"
         tag="p"
         type="number"

@@ -1,10 +1,10 @@
 import * as types from './types';
-import allocationModel from '../model/allocationModel';
+import treeModel from '../model/treeModel';
 import lookupService from '../services/lookupService';
 
 export const getAllocationTree = () => {
   return dispatch => {
-    return allocationModel().getAllocationTree().then( tree => {
+    return treeModel().getTree().then( tree => {
       if (tree) {
         dispatch({ type: types.GET_ALLOCATION_ASSETS_SUCCESS, tree });
       }
@@ -14,7 +14,7 @@ export const getAllocationTree = () => {
 
 export const saveAllocationTree = treeData => {
   return dispatch => {
-    return allocationModel().saveAllocationTree(treeData).then( () => {
+    return treeModel().saveTree(treeData).then( () => {
       dispatch({ type: types.SAVE_ALLOCATION_ASSETS_SUCCESS, treeData });
     });
   };
@@ -89,3 +89,5 @@ export const selectBetaGroup = betaGroup => {
     dispatch({ type: types.SELECTED_BETA_GROUP, betaGroup });
   }
 };
+
+

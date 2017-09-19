@@ -21,7 +21,4 @@ describe('nodeDetails component', () => {
   it ('renders correctly', () => {
     expect(toJSON(wrapper)).toMatchSnapshot();
   });
-  /*it ('renders the input with the selected value', () => {
-    expect(nodeDetails.find('Input').at(0).props().value).toEqual(props.selectedNode.node.accountgroupname);
-  });*/
 });
