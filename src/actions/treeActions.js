@@ -12,10 +12,10 @@ export const getAllocationTree = () => {
   };
 };
 
-export const saveAllocationTree = treeData => {
+export const saveAllocationTree = tree => {
   return dispatch => {
-    return treeModel().saveTree(treeData).then( () => {
-      dispatch({ type: types.SAVE_ALLOCATION_ASSETS_SUCCESS, treeData });
+    return treeModel().saveTree(tree).then( () => {
+      dispatch({ type: types.SAVE_ALLOCATION_ASSETS_SUCCESS, tree });
     });
   };
 };

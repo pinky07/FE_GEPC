@@ -5,82 +5,22 @@ import {
   Col,
 } from 'reactstrap';
 import {AgGridReact} from "ag-grid-react";
-import allocationModel from '../../model/treeModel';
+import allocationModel from '../../model/gridModel';
 import MixDetails from './mixDetails';
 import MixStatistics from './mixStatistics';
+import { columns } from './columnsDef';
 
-let columnDefs = [
-  {
-    field: 'accountgroupname',
-    headerName: 'Node Name',
-    width: 350,
-  },
-  {
-    field: 'assetCat',
-    headerName: 'Asset Category',
-    width: 150,
-  },
-  {
-    field: 'newGrouping',
-    headerName: 'New Grouping',
-    width: 150,
-  },
-  {
-    field: 'aamb',
-    headerName: 'AAMB',
-    width: 150,
-  },
-  {
-    field: 'nd',
-    headerName: 'Node',
-    width: 150,
-  },
-  {
-    field: 'alias',
-    headerName: 'Asset Class Alias',
-    width: 150,
-  },
-  {
-    field: 'policy',
-    headerName: 'Policy',
-    width: 150,
-  },
-  {
-    field: 'value',
-    headerName: 'Value',
-    width: 150,
-  },
-  {
-    field: 'mixA',
-    headerName: 'Mix A',
-    width: 150,
-    editable: true,
-  },
-  {
-    field: 'mixB',
-    headerName: 'Mix B',
-    width: 150,
-    editable: true,
-  },
-  {
-    field: 'mixC',
-    headerName: 'Mix C',
-    width: 150,
-    editable: true,
-  }
-];
-
-class Aggrid extends React.Component {
+class allocationAgGrid extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      columnDefs
+      columnDefs: Array.from(columns)
     }
   }
   componentWillReceiveProps (nextProps) {
     if (nextProps.gridData !== this.props.gridData) {
-      allocationModel().getAllocationGrid(nextProps.gridData).then(rows => { console.log(rows)
+      allocationModel().getGrid(nextProps.gridData).then(rows => {
         this.setState({
           rows,
         });
@@ -125,4 +65,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, null)(Aggrid);
+export default connect(mapStateToProps, null)(allocationAgGrid);
