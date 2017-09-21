@@ -2,7 +2,8 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import * as types from '../../actions/types';
 import * as treeActions from '../../actions/treeActions';
-import { treeModel } from '../../mockData/fixtures';
+import { tree } from '../fixtures/fixtures';
+jest.mock('../../model/treeModel');
 
 describe ('tree actions', () => {
 
@@ -16,46 +17,6 @@ describe ('tree actions', () => {
   };
   let store = createMockStore({...mockStore});
 
-  jest.mock('../../model/treeModel', () => ({
-    __esModule: true,
-    default: () => {
-      return {
-        getTree: () => {
-          return new Promise((resolve, reject) => {
-            resolve({
-              name: 'tree test',
-              data: [
-                {
-                  clientname: 'Bose',
-                  planname: 'Bose Corporation Employees’ Retirement Plan',
-                  accountgrouptype: 'G',
-                  accountgroupid: '733094AB-70F2-48FC-B026-4A580704466E',
-                  accountgroupname: 'Composite',
-                  accountgroupshortname: 'RBCCOMP',
-                  accountgroupperformanceenddate: null,
-                  level: 2,
-                  id: 2,
-                  parent_object_id: '2728654E-489C-406E-90F6-6D1458449A6A',
-                  as_of: '6/30/17',
-                  policy_value: 100,
-                  aa_model_benchmark: null,
-                  actual_mv: null,
-                  title: 'Composite',
-                  children: [],
-                }
-              ]
-            });
-          });
-        },
-        saveTree: tree => {
-          return new Promise((resolve, reject) => {
-            resolve(tree);
-          });
-        }
-      }
-    }
-  }));
-  
   beforeEach(() => {
     store = createMockStore({...mockStore});
   });
@@ -64,7 +25,7 @@ describe ('tree actions', () => {
     const expectedActions = [
       {
         type: types.GET_ALLOCATION_ASSETS_SUCCESS,
-        tree: {...treeModel},
+        tree
       }
     ];
 
@@ -73,16 +34,15 @@ describe ('tree actions', () => {
     });
   });
 
-
   it('creates an async action to save the tree', () => {
     const expectedActions = [
       {
         type: types.SAVE_ALLOCATION_ASSETS_SUCCESS,
-        tree: {...treeModel},
+        tree,
       }
     ];
 
-    return store.dispatch(treeActions.saveAllocationTree({...treeModel})).then(() => {
+    return store.dispatch(treeActions.saveAllocationTree({...tree})).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });
@@ -91,11 +51,11 @@ describe ('tree actions', () => {
     const expectedActions = [
       {
         type: types.CHANGE_TREE,
-        treeData: {...treeModel},
+        treeData: {...tree},
       }
     ];
 
-    store.dispatch(treeActions.updateTree({...treeModel}));
+    store.dispatch(treeActions.updateTree({...tree}));
     expect(store.getActions()).toEqual(expectedActions);
   });
 });

@@ -2,7 +2,7 @@ import React from 'react';
 import { mount  } from 'enzyme';
 import toJSON from 'enzyme-to-json';
 import ColorPicker from '../../../components/treeView/colorPicker';
-import { colorPickerInitialState } from '../../../mockData/fixtures';
+import { colorPickerInitialState } from '../../fixtures/fixtures';
 
 describe('colorPicker component', () => {
   let wrapper = mount (<ColorPicker/>);

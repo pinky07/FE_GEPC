@@ -2,7 +2,7 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import * as types from '../../actions/types';
 import * as nodeActions from '../../actions/nodeActions';
-import { selectedNode } from '../../mockData/fixtures';
+import { selectedNode } from '../fixtures/fixtures';
 
 describe('node actions', () => {
   const createMockStore = configureMockStore([thunk]);

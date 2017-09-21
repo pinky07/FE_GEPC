@@ -59,7 +59,7 @@ export const selectedNode = {
   path: [0]
 };
 
-export const treeModel = {
+export const tree = {
   name: 'tree test',
   data: [
     {
