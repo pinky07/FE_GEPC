@@ -21,7 +21,7 @@ exports[`colorPicker component renders correctly 1`] = `
 </ColorPicker>
 `;
 
-exports[`colorPicker component when clicking the color picker should have the state displayColorPicker set to true 1`] = `
+exports[`colorPicker component when clicking the color picker should have the displayColorPicker state set to true 1`] = `
 <ColorPicker>
   <div
     className="colorPicker"
@@ -42,7 +42,7 @@ exports[`colorPicker component when clicking the color picker should have the st
 </ColorPicker>
 `;
 
-exports[`colorPicker component when clicking the color picker should have the state displayColorPicker set to true 2`] = `
+exports[`colorPicker component when clicking the color picker should have the displayColorPicker state set to true 2`] = `
 <ColorPicker>
   <div
     className="colorPicker"

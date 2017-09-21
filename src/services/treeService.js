@@ -121,7 +121,7 @@ const treeService = () => {
     return children ? { ...node, expanded: true } : node;
   };
 
-  const jumpLevel = (level, {tree, selectedNode }) => {
+  const jumpLevel = (level, { tree, selectedNode }) => {
     let node = _expandNodes (selectedNode.node, level);
     return updateNode(tree, { ...selectedNode, node });
   };

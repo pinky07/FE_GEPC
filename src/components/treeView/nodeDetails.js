@@ -10,7 +10,7 @@ import {
   CardTitle
 } from 'reactstrap';
 import ColorPicker from './colorPicker';
-import { updateNode } from '../../actions';
+import { updateDetailsNode } from '../../actions';
 import TreeService from '../../services/treeService';
 
 export class NodeDetails extends React.Component {
@@ -69,7 +69,7 @@ export class NodeDetails extends React.Component {
 
   renderPolicyValue = () => this.state.node.policy_value ? `${this.state.node.policy_value}%` : '';
 
-  onBlurTest = () => this.props.updateNode(this.state.node);
+  onBlurTest = () => this.props.updateDetailsNode(this.state.node);
 
   changeColorAssignment = color => {
     this.setState({
@@ -77,7 +77,7 @@ export class NodeDetails extends React.Component {
       {...this.state.node,
         colorAssignment: color,
       }
-    }, () => this.props.updateNode(this.state.node));
+    }, () => this.props.updateDetailsNode(this.state.node));
   };
 
   render () {
@@ -193,5 +193,5 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps,{ updateNode })(NodeDetails);
+export default connect(mapStateToProps,{ updateDetailsNode })(NodeDetails);
 

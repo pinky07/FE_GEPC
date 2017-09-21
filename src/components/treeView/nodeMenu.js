@@ -43,7 +43,7 @@ export class NodeMenu extends React.Component {
     });
   }
 
-  onKeyDown = event => {
+  onKeyUp = event => {
     if(event.key === 'Enter'){
       this.props.jumpLevel(this.state.jumpLevel);
       event.target.parentNode.click();
@@ -81,7 +81,7 @@ export class NodeMenu extends React.Component {
                    value={this.state.jumpLevel}
                    onClick={event => event.stopPropagation()}
                    onChange={this.onChangeInput}
-                   onKeyDown={this.onKeyDown}
+                   onKeyUp={this.onKeyUp}
             />
           </div>
         </Item>

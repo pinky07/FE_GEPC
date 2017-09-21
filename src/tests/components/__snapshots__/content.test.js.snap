@@ -98,7 +98,7 @@ exports[`content component renders correctly 1`] = `
                 ]
               }
             >
-              <Connect(Aggrid) />
+              <Connect(AllocationAgGrid) />
             </Col>
           </Row>
         </TabPane>

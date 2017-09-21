@@ -54,7 +54,7 @@ export const selectedNode = {
     actual_mv: null,
     title: 'Composite'
   },
-  maxDepth: 1,
+  maxDepth: 4,
   treeIndex: 0,
   path: [0]
 };

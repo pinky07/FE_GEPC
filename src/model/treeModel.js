@@ -1,5 +1,5 @@
 import assetAllocationService from '../services/assetAllocationService';
-import { getTreeFromFlatData } from 'react-sortable-tree/';
+import { getTreeFromFlatData } from 'react-sortable-tree';
 import _ from 'lodash';
 
 const treeModel = () => {
@@ -29,7 +29,7 @@ const treeModel = () => {
 
   const saveTree = treeData => {
     return assetAllocationService().saveAllocations(treeData).then(() => {
-      console.log(treeData);
+     //console.log(treeData);
     });
   }
 

@@ -19,6 +19,7 @@ import NodeMenu from './nodeMenu';
 import TreeButtonBar from './treeButtonBar';
 import NodeDetails from './nodeDetails';
 import BetaGroupDropdown from './betaGroupDropdown';
+import TreeNodeRenderer from './treeNodeRenderer';
 
 export class AllocationTree extends React.Component {
 
@@ -88,6 +89,7 @@ export class AllocationTree extends React.Component {
               generateNodeProps={rowInfo => ({
                 buttons: this.treeButtons(rowInfo),
               })}
+              nodeContentRenderer={TreeNodeRenderer}
             />
             <NodeMenu/>
           </Col>

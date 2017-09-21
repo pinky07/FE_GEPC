@@ -10,7 +10,7 @@ import MixDetails from './mixDetails';
 import MixStatistics from './mixStatistics';
 import { columns } from './columnsDef';
 
-class allocationAgGrid extends React.Component {
+export class AllocationAgGrid extends React.Component {
 
   constructor(props) {
     super(props);
@@ -65,4 +65,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, null)(allocationAgGrid);
+export default connect(mapStateToProps, null)(AllocationAgGrid);
