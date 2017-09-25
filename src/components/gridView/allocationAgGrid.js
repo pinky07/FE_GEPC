@@ -31,7 +31,7 @@ export class AllocationAgGrid extends React.Component {
   onGridReady(params) {
     this.gridApi = params.api;
     this.columnApi = params.columnApi;
-    this.gridApi.sizeColumnsToFit();
+    //this.gridApi.sizeColumnsToFit();
   }
 
   render () {

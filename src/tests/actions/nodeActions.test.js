@@ -2,7 +2,7 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import * as types from '../../actions/types';
 import * as nodeActions from '../../actions/nodeActions';
-import { selectedNode } from '../fixtures/fixtures';
+import { selectedNode, rowInfo } from '../fixtures/tree';
 
 describe('node actions', () => {
   const createMockStore = configureMockStore([thunk]);
@@ -23,11 +23,10 @@ describe('node actions', () => {
     const expectedActions = [
       {
         type: types.SELECTED_NODE,
-        node: {...selectedNode},
+        node: rowInfo,
       }
     ];
-
-    store.dispatch(nodeActions.selectNode({...selectedNode}));
+    store.dispatch(nodeActions.selectNode(rowInfo));
     expect(store.getActions()).toEqual(expectedActions);
   });
 

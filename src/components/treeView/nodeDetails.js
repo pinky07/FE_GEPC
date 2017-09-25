@@ -17,13 +17,14 @@ export class NodeDetails extends React.Component {
 
   constructor (props) {
     super(props);
+    this.node = {
+      policy_value: '',
+      actual_mv: '',
+      accountgroupshortname: '',
+      accountgroupname: ''
+    };
     this.state = {
-      node: {
-        policy_value: '',
-        actual_mv: '',
-        accountgroupshortname: '',
-        accountgroupname: ''
-      },
+      node: this.node
     }
   }
 
@@ -33,6 +34,10 @@ export class NodeDetails extends React.Component {
       this.setState({
         node
       });
+    } else {
+      this.setState({
+        node: this.node
+      })
     }
   }
 

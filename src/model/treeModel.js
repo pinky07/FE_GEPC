@@ -5,12 +5,16 @@ import _ from 'lodash';
 const treeModel = () => {
 
   const _getTree = allocations => {
-    const argDefaults = {
-      rootKey: allocations[0].parent_object_id,
-      getKey: node => node.accountgroupid,
-      getParentKey: node => node.parent_object_id
-    };
-    return getTreeFromFlatData({...argDefaults, flatData: allocations});
+    if (allocations.length > 0) {
+      const argDefaults = {
+        rootKey: allocations[0].parent_object_id,
+        getKey: node => node.accountgroupid,
+        getParentKey: node => node.parent_object_id
+      };
+      allocations[0].expanded = true;
+      return getTreeFromFlatData({...argDefaults, flatData: allocations});
+    }
+    return [];
   };
   
   const getTree = () => {

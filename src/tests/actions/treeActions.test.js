@@ -2,7 +2,7 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import * as types from '../../actions/types';
 import * as treeActions from '../../actions/treeActions';
-import { tree } from '../fixtures/fixtures';
+import { allocationTree as tree } from '../fixtures/tree';
 jest.mock('../../model/treeModel');
 
 describe ('tree actions', () => {

@@ -23,6 +23,9 @@ export class NodeMenu extends React.Component {
   }
 
   componentWillReceiveProps (nextProps) {
+    if (!nextProps.selectedNode) {
+      return;
+    }
     if (nextProps.selectedNode !== this.props.selectedNode) {
       this.setState({
         jumpLevel: nextProps.selectedNode.maxDepth,

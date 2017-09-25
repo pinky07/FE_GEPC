@@ -2,7 +2,6 @@ import * as types from '../actions/types';
 import TreeService from '../services/treeService';
 
 const INITIAL_STATE = {
-  treeData: [],
   tree: {
     name: '',
     data: []
@@ -17,7 +16,6 @@ const INITIAL_STATE = {
 export default ( state = INITIAL_STATE, action ) => {
   switch (action.type) {
     case types.GET_ALLOCATION_ASSETS_SUCCESS:
-      action.tree.data[0].expanded = true;
       return { ...state, tree: action.tree };
     case types.SELECTED_NODE:
       return { ...state, selectedNode: {...action.node, maxDepth: TreeService().getMaxDepthNode(action.node.node)} };
@@ -39,7 +37,7 @@ export default ( state = INITIAL_STATE, action ) => {
     case types.DELETE_BELOW_NODE:
       return { ...state, tree:{ ...state.tree, data: TreeService().deleteBelowNode(state) } };
     case types.DELETE_NODE:
-      return { ...state, tree:{ ...state.tree, data: TreeService().deleteNode(state) } };
+      return { ...state, tree:{ ...state.tree, data: TreeService().deleteNode(state) }, selectedNode: undefined };
     case types.JUMP_LEVEL:
       return { ...state, tree:{ ...state.tree, data: TreeService().jumpLevel(action.level, state) } };
     default:

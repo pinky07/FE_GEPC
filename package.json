@@ -24,6 +24,7 @@
     "react-dom-factories": "^1.0.1",
     "react-redux": "^5.0.6",
     "react-scripts": "1.0.10",
+    "react-select": "^1.0.0-rc.10",
     "react-sortable-tree": "^0.1.21",
     "react-table": "^6.5.3",
     "react-transition-group": "^1.2.0",
@@ -61,7 +62,8 @@
       "!src/services/constants.js",
       "!src/actions/index.js",
       "!src/actions/types.js",
-      "!src/reducers/index.js"
+      "!src/reducers/index.js",
+      "!src/components/treeView/treeNodeRenderer.js"
     ]
   }
 }

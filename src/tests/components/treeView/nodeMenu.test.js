@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow, mount  } from 'enzyme';
 import toJSON from 'enzyme-to-json';
 import { NodeMenu } from '../../../components/treeView/nodeMenu';
-import { selectedNode } from '../../fixtures/fixtures';
+import { selectedNode } from '../../fixtures/tree';
 
 let props = {
   selectedNode: {...selectedNode.node},
