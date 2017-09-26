@@ -10,8 +10,8 @@ export const columns = [
     width: 150,
   },
   {
-    field: 'newGrouping',
-    headerName: 'New Grouping',
+    field: 'alias',
+    headerName: 'Asset Class Alias',
     width: 150,
   },
   {
@@ -20,22 +20,12 @@ export const columns = [
     width: 150,
   },
   {
-    field: 'nd',
-    headerName: 'Node',
-    width: 150,
-  },
-  {
-    field: 'alias',
-    headerName: 'Asset Class Alias',
-    width: 150,
-  },
-  {
-    field: 'policy',
+    field: 'policy_value',
     headerName: 'Policy',
     width: 150,
   },
   {
-    field: 'value',
+    field: 'actual_mv',
     headerName: 'Value',
     width: 150,
   },
@@ -58,3 +48,7 @@ export const columns = [
     editable: true,
   }
 ];
+
+const nodeNameComparator = (name1, name2) => {
+  return -1;
+}

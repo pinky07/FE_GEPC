@@ -39,8 +39,8 @@ exports[`AllocationAgGrid component renders correctly 1`] = `
                 "width": 150,
               },
               Object {
-                "field": "newGrouping",
-                "headerName": "New Grouping",
+                "field": "alias",
+                "headerName": "Asset Class Alias",
                 "width": 150,
               },
               Object {
@@ -49,22 +49,12 @@ exports[`AllocationAgGrid component renders correctly 1`] = `
                 "width": 150,
               },
               Object {
-                "field": "nd",
-                "headerName": "Node",
-                "width": 150,
-              },
-              Object {
-                "field": "alias",
-                "headerName": "Asset Class Alias",
-                "width": 150,
-              },
-              Object {
-                "field": "policy",
+                "field": "policy_value",
                 "headerName": "Policy",
                 "width": 150,
               },
               Object {
-                "field": "value",
+                "field": "actual_mv",
                 "headerName": "Value",
                 "width": 150,
               },
@@ -88,6 +78,7 @@ exports[`AllocationAgGrid component renders correctly 1`] = `
               },
             ]
           }
+          enableSorting={true}
           headerHeight="35"
           onGridReady={[Function]}
         />

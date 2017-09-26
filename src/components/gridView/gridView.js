@@ -46,6 +46,7 @@ export class AllocationAgGrid extends React.Component {
                 rowData={this.state && this.state.rows}
                 onGridReady={this.onGridReady}
                 headerHeight="35"
+                enableSorting
               />
             </div>
           </Col>
