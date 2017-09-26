@@ -25,7 +25,7 @@ describe('the tree reducer', () => {
   it('should set the state selected node', () => {
     const action = {
       type: types.SELECTED_NODE,
-      node: {...rowInfo}
+      payload: {...rowInfo}
     };
     const state = allocationTree(undefined, action);
     expect(state.selectedNode).toEqual(selectedNode);

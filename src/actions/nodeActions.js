@@ -2,13 +2,13 @@ import * as types from './types';
 
 export const selectNode = rowInfo => {
   const { treeIndex, path } = rowInfo;
-  const node = {
+  const payload = {
     node: rowInfo.node,
     treeIndex,
     path,
   };
   return dispatch => {
-    dispatch({ type: types.SELECTED_NODE, node });
+    dispatch({ type: types.SELECTED_NODE, payload });
   }
 };
 

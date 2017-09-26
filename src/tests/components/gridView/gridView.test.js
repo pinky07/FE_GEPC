@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow  } from 'enzyme';
 import toJSON from 'enzyme-to-json';
-import { AllocationAgGrid } from '../../../components/gridView/allocationAgGrid';
+import { AllocationAgGrid } from '../../../components/gridView/gridView';
 
 const props = {
   gridData: [],

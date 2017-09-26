@@ -23,7 +23,7 @@ describe('node actions', () => {
     const expectedActions = [
       {
         type: types.SELECTED_NODE,
-        node: rowInfo,
+        payload: rowInfo,
       }
     ];
     store.dispatch(nodeActions.selectNode(rowInfo));

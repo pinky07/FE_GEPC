@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AllocationAgGrid component renders correctly 1`] = `
+<div
+  className="allocationGrid"
+>
+  <Row
+    tag="div"
+  >
+    <Col
+      className="gridContainer"
+      lg="9"
+      md="9"
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <div
+        className="aggridcontainer ag-fresh"
+      >
+        <AgGridReact
+          columnDefs={
+            Array [
+              Object {
+                "field": "accountgroupname",
+                "headerName": "Node Name",
+                "width": 350,
+              },
+              Object {
+                "field": "assetCat",
+                "headerName": "Asset Category",
+                "width": 150,
+              },
+              Object {
+                "field": "newGrouping",
+                "headerName": "New Grouping",
+                "width": 150,
+              },
+              Object {
+                "field": "aamb",
+                "headerName": "AAMB",
+                "width": 150,
+              },
+              Object {
+                "field": "nd",
+                "headerName": "Node",
+                "width": 150,
+              },
+              Object {
+                "field": "alias",
+                "headerName": "Asset Class Alias",
+                "width": 150,
+              },
+              Object {
+                "field": "policy",
+                "headerName": "Policy",
+                "width": 150,
+              },
+              Object {
+                "field": "value",
+                "headerName": "Value",
+                "width": 150,
+              },
+              Object {
+                "editable": true,
+                "field": "mixA",
+                "headerName": "Mix A",
+                "width": 150,
+              },
+              Object {
+                "editable": true,
+                "field": "mixB",
+                "headerName": "Mix B",
+                "width": 150,
+              },
+              Object {
+                "editable": true,
+                "field": "mixC",
+                "headerName": "Mix C",
+                "width": 150,
+              },
+            ]
+          }
+          headerHeight="35"
+          onGridReady={[Function]}
+        />
+      </div>
+    </Col>
+    <Col
+      lg="3"
+      md="3"
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <MixStatistics />
+      <MixDetails />
+    </Col>
+  </Row>
+</div>
+`;

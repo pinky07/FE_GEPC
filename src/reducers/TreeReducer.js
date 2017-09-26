@@ -18,7 +18,7 @@ export default ( state = INITIAL_STATE, action ) => {
     case types.GET_ALLOCATION_ASSETS_SUCCESS:
       return { ...state, tree: action.tree };
     case types.SELECTED_NODE:
-      return { ...state, selectedNode: {...action.node, maxDepth: TreeService().getMaxDepthNode(action.node.node)} };
+      return { ...state, selectedNode: {...action.payload, maxDepth: TreeService().getMaxDepthNode(action.payload.node)} };
     case types.CHANGE_TREE:
       return { ...state, tree:{ ...state.tree, data: action.treeData } };
     case types.UPDATE_DETAILS_NODE:

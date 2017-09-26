@@ -11,8 +11,8 @@ import {
   NavItem,
   NavLink
 } from 'reactstrap';
-import AllocationTree from './treeView/allocationTree';
-import AllocationAgGrid from './gridView/allocationAgGrid';
+import TreeView from './treeView/treeView';
+import GridView from './gridView/gridView';
 
 const TREE_VIEW_TAB = '1';
 const GRID_VIEW_TAB = '2';
@@ -63,7 +63,7 @@ export class Content extends React.Component {
               <TabPane tabId={TREE_VIEW_TAB}>
                 <Row>
                   <Col lg="12">
-                    <AllocationTree/>
+                    <TreeView/>
                   </Col>
                 </Row>
               </TabPane>
@@ -71,7 +71,7 @@ export class Content extends React.Component {
               <TabPane tabId={GRID_VIEW_TAB}>
                 <Row>
                   <Col lg="12">
-                    <AllocationAgGrid/>
+                    <GridView/>
                   </Col>
                 </Row>
               </TabPane>

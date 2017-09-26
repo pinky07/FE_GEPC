@@ -63,6 +63,7 @@
       "!src/actions/index.js",
       "!src/actions/types.js",
       "!src/reducers/index.js",
+      "!src/tests/**/*.js",
       "!src/components/treeView/treeNodeRenderer.js"
     ]
   }
