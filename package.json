@@ -34,6 +34,7 @@
     "redux-thunk": "^2.2.0"
   },
   "scripts": {
+    "generate-docs": "jsdoc -c jsdoc.json",
     "build-css": "node-sass-chokidar src/styles/scss/app.scss -o src/styles/css",
     "watch-css": "npm run build-css && node-sass-chokidar src/styles/scss -o src/styles/css --watch --recursive",
     "start-js": "react-scripts start",
@@ -43,9 +44,11 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "docdash": "^0.4.0",
     "enzyme": "^2.9.1",
     "enzyme-to-json": "^1.5.1",
     "jest": "^20.0.4",
+    "jsdoc": "~3.5.5",
     "moxios": "^0.4.0",
     "react-test-renderer": "^15.6.1",
     "redux-devtools-extension": "^2.13.2",
