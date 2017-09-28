@@ -5,9 +5,17 @@ import {
   Container,
 } from 'reactstrap';
 
+
+/**
+ * Header component with Segment, Client and Plan.
+ * 
+ * @author Francisco Zuñiga
+ * @class Header
+ * @extends {React.Component}
+ */
 export default class Header extends React.Component {
 
-  render () {
+  render() {
     return (
       <div className="app-header">
         <Container>

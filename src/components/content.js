@@ -17,6 +17,13 @@ import GridView from './gridView/gridView';
 const TREE_VIEW_TAB = '1';
 const GRID_VIEW_TAB = '2';
 
+/**
+ * Content component with Grid and Tree View tabs.
+ * 
+ * @author Francisco Zuñiga
+ * @class Content
+ * @extends {React.Component}
+ */
 export class Content extends React.Component {
 
   constructor(props) {
@@ -34,7 +41,7 @@ export class Content extends React.Component {
     }
   }
 
-  render () {
+  render() {
     return (
       <Container className="content" fluid={true}>
         {this.props.isLoading ? <div className="loader"></div> : null}
@@ -63,7 +70,7 @@ export class Content extends React.Component {
               <TabPane tabId={TREE_VIEW_TAB}>
                 <Row>
                   <Col lg="12">
-                    <TreeView/>
+                    <TreeView />
                   </Col>
                 </Row>
               </TabPane>
@@ -71,7 +78,7 @@ export class Content extends React.Component {
               <TabPane tabId={GRID_VIEW_TAB}>
                 <Row>
                   <Col lg="12">
-                    <GridView/>
+                    <GridView />
                   </Col>
                 </Row>
               </TabPane>
@@ -98,4 +105,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect( mapStateToProps, null )(Content);
+export default connect(mapStateToProps, null)(Content);
