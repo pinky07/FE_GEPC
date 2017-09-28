@@ -1,0 +1,25 @@
+/**
+ * centered.scss - version 1
+ * 
+ * Copied from: https://css-tricks.com/centering-in-the-unknown/
+ */
+
+// This parent can be any width and height
+.vcenter-parent {
+  // May want to do this if there is risk the container may be narrower than the element inside
+  white-space: nowrap;
+}
+ 
+// The ghost, nudged to maintain perfect centering
+.vcenter-parent:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+
+// The element to be centered, can also be of any width and height
+.vcenter {
+  display: inline-block;
+  vertical-align: middle;
+}
