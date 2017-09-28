@@ -26,7 +26,7 @@ export class Header extends React.Component {
    * 
    * @memberof Header
    */
-  save(event) {
+  save = (event) => {
     console.log("Save button clicked!");
     this.props.save();
   }
@@ -36,7 +36,7 @@ export class Header extends React.Component {
    * 
    * @memberof Header
    */
-  help(event) {
+  help = (event) => {
     console.log("Help button clicked!");
   }
 
@@ -62,8 +62,8 @@ export class Header extends React.Component {
               <p className="vcenter">Segment: <span>{segment}</span> Client: <span>{client}</span> Plan: <span>{plan}</span></p>
             </Col>
             <Col xs="12" md="2" className="text-right">
-              <Button color="primary" className="btn-save" onClick={this.save.bind(this) }>Save</Button>
-              <Button color="primary" className="btn-help" onClick={this.help.bind(this) }>Help</Button>
+              <Button color="primary" className="btn-save" onClick={this.save}>Save</Button>
+              <Button color="primary" className="btn-help" onClick={this.help}>Help</Button>
             </Col>
           </Row>
         </Container>
@@ -87,7 +87,7 @@ const mapStateToProps = state => {
  * Connects this component to Redux
  */
 export default connect(
-  mapStateToProps, 
+  mapStateToProps,
   {
     save,
   }
