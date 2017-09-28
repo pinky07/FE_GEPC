@@ -26,7 +26,7 @@ export class Header extends React.Component {
    * 
    * @memberof Header
    */
-  save = (event) => {
+  save = event => {
     console.log("Save button clicked!");
     this.props.save();
   }
@@ -36,7 +36,7 @@ export class Header extends React.Component {
    * 
    * @memberof Header
    */
-  help = (event) => {
+  help = event => {
     console.log("Help button clicked!");
   }
 
