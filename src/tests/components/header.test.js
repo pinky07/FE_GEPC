@@ -1,12 +1,18 @@
 import React from 'react';
-import { mount  } from 'enzyme';
+import { mount } from 'enzyme';
 import toJSON from 'enzyme-to-json';
-import Header from '../../components/header';
+
+import spotFire from '../fixtures/spotfire';
+import { Header } from '../../components/header';
+
+let props = {
+  ...spotFire,
+};
 
 describe('header component', () => {
-  let wrapper = mount(<Header/>);
+  let wrapper = mount(<Header {...props} />);
 
-  it ('renders correctly', () => {
+  it('renders correctly', () => {
     expect(toJSON(wrapper)).toMatchSnapshot();
   });
 });

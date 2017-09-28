@@ -1,3 +1,6 @@
+
+// Shared Action Types
+export const SAVE = 'save';
 export const SHOW_LOADING = 'showLoading';
 export const HIDE_LOADING = 'hideLoading';
 
@@ -22,10 +25,5 @@ export const UPDATE_DETAILS_NODE = 'updateDetailsNode';
 export const GET_BETA_GROUPS_SUCCESS = 'getBetaGroupsSuccess';
 export const SELECTED_BETA_GROUP = 'selectBetaGroup';
 
-
-
-
-
-
-
-
+// SpotFire Action Types
+export const FETCH_SPOTFIRE = 'fetchSpotFire';
