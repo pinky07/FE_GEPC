@@ -87,7 +87,8 @@ const mapStateToProps = state => {
  * Connects this component to Redux
  */
 export default connect(
-  mapStateToProps, {
+  mapStateToProps, 
+  {
     save,
   }
 )(Header);
