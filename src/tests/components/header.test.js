@@ -1,19 +1,18 @@
 import React from 'react';
-import { mount  } from 'enzyme';
+import { mount } from 'enzyme';
 import toJSON from 'enzyme-to-json';
+
+import spotFire from '../fixtures/spotfire';
 import { Header } from '../../components/header';
 
 let props = {
-  segment: 'Segment',
-  client: 'Client',
-  plan: 'Plan',
-  save: jest.fn(),
+  ...spotFire,
 };
 
 describe('header component', () => {
-  let wrapper = mount(<Header {...props}/>);
+  let wrapper = mount(<Header {...props} />);
 
-  it ('renders correctly', () => {
+  it('renders correctly', () => {
     expect(toJSON(wrapper)).toMatchSnapshot();
   });
 });

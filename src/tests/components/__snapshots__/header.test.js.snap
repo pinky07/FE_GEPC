@@ -1,12 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`header component renders correctly 1`] = `
-<Header
-  client="Client"
-  plan="Plan"
-  save={[Function]}
-  segment="Segment"
->
+<Header>
   <div
     className="app-header"
   >
@@ -70,17 +65,11 @@ exports[`header component renders correctly 1`] = `
                   className="vcenter"
                 >
                   Segment: 
-                  <span>
-                    Segment
-                  </span>
+                  <span />
                    Client: 
-                  <span>
-                    Client
-                  </span>
+                  <span />
                    Plan: 
-                  <span>
-                    Plan
-                  </span>
+                  <span />
                 </p>
               </div>
             </Col>
