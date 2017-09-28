@@ -13,6 +13,7 @@ import {
 } from 'reactstrap';
 import TreeView from './treeView/treeView';
 import GridView from './gridView/gridView';
+import { getAssetsAllocation, getAllocationTree, getAllocationGrid } from '../actions';
 
 const TREE_VIEW_TAB = '1';
 const GRID_VIEW_TAB = '2';
@@ -31,7 +32,7 @@ export class Content extends React.Component {
     this.state = {
       activeTab: TREE_VIEW_TAB,
     };
-  }
+  };
 
   toggle = index => {
     if (this.state.activeTab !== index) {
@@ -39,9 +40,33 @@ export class Content extends React.Component {
         activeTab: index
       });
     }
+    if (index === GRID_VIEW_TAB) {
+      this.props.getAllocationGrid();
+    } else {
+      this.props.getAllocationTree();
+    }
+  };
+  
+  componentDidMount () {
+    this.props.getAssetsAllocation();
   }
 
-  render() {
+  componentWillReceiveProps (nextProps) {
+    if (nextProps.assetsAllocation !== this.props.assetsAllocation) {
+      const activeTab = nextProps.assetsAllocation.mixes.length > 0 ? GRID_VIEW_TAB : TREE_VIEW_TAB;
+
+      if (activeTab === GRID_VIEW_TAB) {
+        this.props.getAllocationGrid();
+      } else {
+        this.props.getAllocationTree();
+      }
+      this.setState({
+        activeTab
+      });
+    }
+  }
+
+  render () {
     return (
       <Container className="content" fluid={true}>
         {this.props.isLoading ? <div className="loader"></div> : null}
@@ -93,6 +118,7 @@ export class Content extends React.Component {
 
 Content.propTypes = {
   isLoading: PropTypes.bool.isRequired,
+  assetsAllocation: PropTypes.object.isRequired,
 };
 
 Content.defaultProps = {
@@ -105,4 +131,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, null)(Content);
+export default connect( mapStateToProps, { getAssetsAllocation, getAllocationTree, getAllocationGrid } )(Content);

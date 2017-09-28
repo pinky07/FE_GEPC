@@ -4,30 +4,34 @@ import {
   Row,
   Col,
 } from 'reactstrap';
-import {AgGridReact} from "ag-grid-react";
-import allocationModel from '../../model/gridModel';
+import { AgGridReact } from "ag-grid-react";
+import { getAllocationGrid, getPlanAnalysisLens } from '../../actions';
 import MixDetails from './mixDetails';
 import MixStatistics from './mixStatistics';
 import { columns } from './columnsDef';
+import PlanAnalysisLensDropdown from './planAnalysisLensDropdown';
 
 export class AllocationAgGrid extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      columnDefs: Array.from(columns)
-    }
-  }
-  componentWillReceiveProps (nextProps) {
-    if (nextProps.gridData !== this.props.gridData) {
-      allocationModel().getGrid(nextProps.gridData).then(rows => {
-        this.setState({
-          rows,
-        });
-      });
+      columnDefs: Array.from(columns),
     }
   }
 
+  componentDidMount () {
+    //this.props.getAllocationGrid();
+  }
+
+  componentWillReceiveProps (nextProps) {
+    if (nextProps.gridData !== this.props.gridData) {
+      this.setState({
+        rows: nextProps.gridData,
+      });
+    }
+  }
+  
   onGridReady(params) {
     this.gridApi = params.api;
     this.columnApi = params.columnApi;
@@ -38,6 +42,11 @@ export class AllocationAgGrid extends React.Component {
 
     return (
       <div className="allocationGrid">
+        <Row>
+          <Col lg="12" md="12">
+            <PlanAnalysisLensDropdown />
+          </Col>
+        </Row>
         <Row>
           <Col lg="9" md="9" className="gridContainer">
             <div className="aggridcontainer ag-fresh">
@@ -62,8 +71,8 @@ export class AllocationAgGrid extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    ...state.allocationGrid
+    ...state.allocationGrid,
   };
 };
 
-export default connect(mapStateToProps, null)(AllocationAgGrid);
+export default connect(mapStateToProps, { getAllocationGrid, getPlanAnalysisLens })(AllocationAgGrid);

@@ -15,7 +15,7 @@ describe('the tree reducer', () => {
 
   it('should set the state tree', () => {
     const action = {
-      type: types.GET_ALLOCATION_ASSETS_SUCCESS,
+      type: types.GET_ASSETS_ALLOCATION_SUCCESS,
       tree
     };
     const state = allocationTree(undefined, action);

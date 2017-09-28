@@ -1,7 +1,9 @@
 .allocationGrid {
-  height: 1000px;
-
-  .gridContainer {
+  .dropdownPlanAnalysis {
+    margin-left: 350px;
+    .dropdown-menu {
+      width: 184px;
+    }
   }
 
   .aggridcontainer {
@@ -50,15 +52,11 @@
     border-color: white !important;
   }
 
-
   .react-grid-Container {
     max-width: 1400px;
     width: 180% !important;
   }
 
-  /*.react-grid-Container {
-    width: auto !important;
-  }*/
   .react-grid-Canvas {
     overflow-x: hidden !important;
   }
@@ -79,8 +77,4 @@
     background-color: $green-2;
   }
 
-  .betagroupDropdown {
-    margin-top: 1em;
-    margin-bottom: 1em;
-  }
 }

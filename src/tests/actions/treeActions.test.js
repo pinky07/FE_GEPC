@@ -24,7 +24,7 @@ describe ('tree actions', () => {
   it('creates an async action to fetch the tree', () => {
     const expectedActions = [
       {
-        type: types.GET_ALLOCATION_ASSETS_SUCCESS,
+        type: types.GET_ASSETS_ALLOCATION_SUCCESS,
         tree
       }
     ];
@@ -37,7 +37,7 @@ describe ('tree actions', () => {
   it('creates an async action to save the tree', () => {
     const expectedActions = [
       {
-        type: types.SAVE_ALLOCATION_ASSETS_SUCCESS,
+        type: types.SAVE_ASSETS_ALLOCATION_SUCCESS,
         tree,
       }
     ];

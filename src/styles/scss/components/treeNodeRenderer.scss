@@ -299,3 +299,10 @@
       height: $row-padding;
     }
   }
+
+  input[type='checkbox'] {
+    position: relative;
+    left: .5em;
+    top: 0.1em;
+    margin-right: 1em;
+  }

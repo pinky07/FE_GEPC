@@ -53,3 +53,9 @@ export const updateDetailsNode = node => {
     dispatch({ type: types.UPDATE_DETAILS_NODE, node });
   }
 };
+
+export const toggleNodeAtPath = (node, path) => {
+  return dispatch => {
+    dispatch({ type: types.TOGGLE_NODE_AT_PATH, node, path });
+  }
+};
