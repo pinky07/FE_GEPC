@@ -2,13 +2,77 @@
 
 exports[`AllocationAgGrid component renders correctly 1`] = `
 <div
-  className="allocationGrid"
+  className="gridView"
 >
   <Row
     tag="div"
   >
     <Col
-      className="gridContainer"
+      lg="12"
+      md="12"
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <Select
+        addLabelText="Add \\"{label}\\"?"
+        arrowRenderer={[Function]}
+        autosize={true}
+        backspaceRemoves={true}
+        backspaceToRemoveMessage="Press backspace to remove {label}"
+        className="dropdownPlanAnalysis"
+        clearAllText="Clear all"
+        clearRenderer={[Function]}
+        clearValueText="Clear value"
+        clearable={false}
+        closeOnSelect={true}
+        deleteRemoves={true}
+        delimiter=","
+        disabled={false}
+        escapeClearsValue={true}
+        filterOptions={[Function]}
+        ignoreAccents={true}
+        ignoreCase={true}
+        inputProps={Object {}}
+        isLoading={false}
+        joinValues={false}
+        labelKey="name"
+        matchPos="any"
+        matchProp="any"
+        menuBuffer={0}
+        menuRenderer={[Function]}
+        multi={false}
+        noResultsText="No results found"
+        onBlurResetsInput={true}
+        onChange={[Function]}
+        onCloseResetsInput={true}
+        onSelectResetsInput={true}
+        openOnClick={true}
+        optionComponent={[Function]}
+        pageSize={5}
+        placeholder="Plan Analysis Lens"
+        required={false}
+        scrollMenuIntoView={true}
+        searchable={true}
+        simpleValue={false}
+        tabSelectsValue={true}
+        valueComponent={[Function]}
+        valueKey="id"
+      />
+    </Col>
+  </Row>
+  <Row
+    tag="div"
+  >
+    <Col
+      className=""
       lg="9"
       md="9"
       tag="div"
@@ -23,7 +87,7 @@ exports[`AllocationAgGrid component renders correctly 1`] = `
       }
     >
       <div
-        className="aggridcontainer ag-fresh"
+        className="gridContainer ag-fresh"
       >
         <AgGridReact
           columnDefs={
@@ -34,14 +98,14 @@ exports[`AllocationAgGrid component renders correctly 1`] = `
                 "width": 350,
               },
               Object {
-                "field": "assetCat",
+                "field": "assetCategory",
                 "headerName": "Asset Category",
-                "width": 150,
+                "width": 184,
               },
               Object {
-                "field": "alias",
+                "field": "accountgroupname",
                 "headerName": "Asset Class Alias",
-                "width": 150,
+                "width": 350,
               },
               Object {
                 "field": "aamb",
@@ -64,23 +128,12 @@ exports[`AllocationAgGrid component renders correctly 1`] = `
                 "headerName": "Mix A",
                 "width": 150,
               },
-              Object {
-                "editable": true,
-                "field": "mixB",
-                "headerName": "Mix B",
-                "width": 150,
-              },
-              Object {
-                "editable": true,
-                "field": "mixC",
-                "headerName": "Mix C",
-                "width": 150,
-              },
             ]
           }
           enableSorting={true}
           headerHeight="35"
           onGridReady={[Function]}
+          rowData={Array []}
         />
       </div>
     </Col>

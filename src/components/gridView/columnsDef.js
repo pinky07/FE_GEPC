@@ -5,7 +5,7 @@ export const columns = [
     width: 350,
   },
   {
-    field: 'assetCat',
+    field: 'assetCategory',
     headerName: 'Asset Category',
     width: 184,
   },
@@ -36,7 +36,3 @@ export const columns = [
     editable: true,
   },
 ];
-
-const nodeNameComparator = (name1, name2) => {
-  return null;
-}

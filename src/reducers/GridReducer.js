@@ -2,10 +2,6 @@ import * as types from '../actions/types';
 
 const INITIAL_STATE = {
   gridData: [],
-  grid: {
-    data: [],
-    mixes: [],
-  },
   planAnalysisLens: [],
 };
 

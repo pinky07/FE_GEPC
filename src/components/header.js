@@ -8,7 +8,7 @@ import {
 } from 'reactstrap';
 
 import {
-  save,
+  saveAssetsAllocation,
 } from '../actions';
 
 /**
@@ -28,7 +28,7 @@ export class Header extends React.Component {
    */
   save = event => {
     console.log("Save button clicked!");
-    this.props.save();
+    this.props.saveAssetsAllocation();
   }
 
   /**
@@ -89,6 +89,6 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   {
-    save,
+    saveAssetsAllocation,
   }
 )(Header);

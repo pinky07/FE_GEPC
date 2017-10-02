@@ -13,7 +13,11 @@ import {
 } from 'reactstrap';
 import TreeView from './treeView/treeView';
 import GridView from './gridView/gridView';
-import { getAssetsAllocation, getAllocationTree, getAllocationGrid } from '../actions';
+import { 
+  getAssetsAllocation, 
+  getAllocationTree, 
+  getAllocationGrid 
+} from '../actions';
 
 const TREE_VIEW_TAB = '1';
 const GRID_VIEW_TAB = '2';
@@ -27,13 +31,16 @@ const GRID_VIEW_TAB = '2';
  */
 export class Content extends React.Component {
 
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       activeTab: TREE_VIEW_TAB,
     };
   };
 
+  /**
+   * Toggles between tree and grid view
+   */
   toggle = index => {
     if (this.state.activeTab !== index) {
       this.setState({
@@ -43,17 +50,24 @@ export class Content extends React.Component {
     if (index === GRID_VIEW_TAB) {
       this.props.getAllocationGrid();
     } else {
-      this.props.getAllocationTree();
+      //this.props.getAllocationTree();
     }
   };
-  
+
+  /**
+   * Calls the action to get assets allocation
+   */
   componentDidMount () {
     this.props.getAssetsAllocation();
   }
 
+  /**
+   * Checks for new assets allocation being passed as props
+   * Sets the active view according to the assets allocation data
+   */
   componentWillReceiveProps (nextProps) {
     if (nextProps.assetsAllocation !== this.props.assetsAllocation) {
-      const activeTab = nextProps.assetsAllocation.mixes.length > 0 ? GRID_VIEW_TAB : TREE_VIEW_TAB;
+      const activeTab = nextProps.assetsAllocation.hasGrid ? GRID_VIEW_TAB : TREE_VIEW_TAB;
 
       if (activeTab === GRID_VIEW_TAB) {
         this.props.getAllocationGrid();
@@ -66,6 +80,9 @@ export class Content extends React.Component {
     }
   }
 
+  /**
+   * Renders the component
+   */
   render () {
     return (
       <Container className="content" fluid={true}>
@@ -131,4 +148,8 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect( mapStateToProps, { getAssetsAllocation, getAllocationTree, getAllocationGrid } )(Content);
+export default connect( mapStateToProps, {
+  getAssetsAllocation,
+  getAllocationTree,
+  getAllocationGrid
+} )(Content);

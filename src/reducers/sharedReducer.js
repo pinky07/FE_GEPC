@@ -4,7 +4,8 @@ const INITIAL_STATE = {
   assetsAllocation: {
     name: '',
     mixes: [],
-    elements: undefined
+    elements: [],
+    hasGrid: false,
   },
   isLoading: false,
 };

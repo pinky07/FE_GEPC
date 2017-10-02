@@ -30,9 +30,10 @@ const allocationService = () => {
     });
   };
 
-  const saveAllocations = (tree) => {
+  const saveAllocations = (assetsAllocation) => {
+    //return axios.get(`http://localhost:3000/${Constants.API}/allocations`);
     return new Promise((resolve, reject) => {
-      resolve(tree);
+      resolve(assetsAllocation);
     });
   };
 

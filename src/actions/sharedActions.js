@@ -2,15 +2,6 @@ import * as types from './types';
 import assetsAllocationModel from '../model/assetsAllocationModel';
 
 /**
- * Saves everything to the backend
- */
-export const save = () => {
-  return dispatch => {
-    dispatch({ type: types.SAVE });
-  }
-};
-
-/**
  * Displays a loading spinner
  */
 export const showLoading = () => {
@@ -28,6 +19,20 @@ export const hideLoading = () => {
   }
 };
 
+/**
+ * Saves everything to the backend
+ */
+export const saveAssetsAllocation = assetsAllocation => {
+  return dispatch => {
+    return assetsAllocationModel().save(assetsAllocation).then( () => {
+      dispatch({ type: types.SAVE_ASSETS_ALLOCATION_SUCCESS });
+    });
+  };
+};
+
+/**
+ * Gets the assets allocation from the model
+ */
 export const getAssetsAllocation = () => {
   return dispatch => {
     return assetsAllocationModel().get().then( assetsAllocation => {

@@ -26,10 +26,12 @@ export const UPDATE_DETAILS_NODE = 'updateDetailsNode';
 export const GET_BETA_GROUPS_SUCCESS = 'getBetaGroupsSuccess';
 export const SELECTED_BETA_GROUP = 'selectBetaGroup';
 
-
-export const GET_PLAN_ANALYSIS_SUCCESS = 'getPlanAnalysisSuccess';
 export const GET_GRID_SUCCESS = 'getGridSuccess';
 export const GET_TREE_SUCCESS = 'getTreeSuccess';
+
+//Grid actions
+export const GET_PLAN_ANALYSIS_SUCCESS = 'getPlanAnalysisSuccess';
+export const SELECTED_PLAN_ANALYSIS = 'selectedPlanAnalysis';
 
 // SpotFire Action Types
 export const FETCH_SPOTFIRE = 'fetchSpotFire';

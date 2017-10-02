@@ -22,3 +22,10 @@ export const getPlanAnalysisLens = () => {
     });
   };
 };
+
+export const selectPlanAnalysis = plan => {
+  return dispatch => {
+    dispatch({ type: types.SELECTED_PLAN_ANALYSIS, plan });
+  }
+};
+

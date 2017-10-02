@@ -10,7 +10,6 @@ import {
 import SortableTree from 'react-sortable-tree';
 import {
   getAllocationTree,
-  saveAllocationTree,
   selectNode,
   updateTree,
 } from '../../actions';
@@ -22,7 +21,7 @@ import BetaGroupDropdown from './betaGroupDropdown';
 import TreeNodeRenderer from './treeNodeRenderer';
 
 export class AllocationTree extends React.Component {
-
+  
   componentWillReceiveProps (nextProps) {
     if (nextProps.tree !== this.props.tree) {
       if (!this.props.selectedNode) {
@@ -111,7 +110,6 @@ const mapStateToProps = state => {
 
 export default connect( mapStateToProps, {
   getAllocationTree,
-  saveAllocationTree,
   selectNode,
   updateTree,
 } )(AllocationTree);
