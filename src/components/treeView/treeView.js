@@ -25,7 +25,11 @@ export class AllocationTree extends React.Component {
   componentWillReceiveProps (nextProps) {
     if (nextProps.tree !== this.props.tree) {
       if (!this.props.selectedNode) {
-        this.props.selectNode({ node: nextProps.tree.data[0] });
+        this.props.selectNode({
+          node: nextProps.tree.data[0],
+          treeIndex: 0,
+          path: [0],
+        });
       }
     }
   }
