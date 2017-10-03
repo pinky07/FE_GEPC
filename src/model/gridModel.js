@@ -3,7 +3,7 @@ import _ from 'lodash';
 
 const gridModel = () => {
 
-  const getGrid = (treeData) => {
+  const getData = (treeData) => {
     return new Promise((resolve, reject) => {
       let gridData = [];
       if (treeData && treeData.length) {
@@ -14,12 +14,12 @@ const gridModel = () => {
           return item.node;
         });
       }
-      resolve(gridData);
+      resolve(gridData.filter( (item, index) => { return item.showOnGrid || index === 0 }));
     });
   }
 
   return {
-    getGrid,
+    getData,
   };
 }
 

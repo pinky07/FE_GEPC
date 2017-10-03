@@ -55,7 +55,7 @@ export class BetaGroupDropdown extends React.Component {
       );
     }
     return null;
-  }
+  };
 
   render () {
     return (

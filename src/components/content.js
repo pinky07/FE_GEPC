@@ -13,27 +13,74 @@ import {
 } from 'reactstrap';
 import TreeView from './treeView/treeView';
 import GridView from './gridView/gridView';
+import { 
+  getAssetsAllocation, 
+  getAllocationTree, 
+  getAllocationGrid 
+} from '../actions';
 
 const TREE_VIEW_TAB = '1';
 const GRID_VIEW_TAB = '2';
 
+/**
+ * Content component with Grid and Tree View tabs.
+ * 
+ * @author Francisco Zuñiga
+ * @class Content
+ * @extends {React.Component}
+ */
 export class Content extends React.Component {
 
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       activeTab: TREE_VIEW_TAB,
     };
-  }
+  };
 
+  /**
+   * Toggles between tree and grid view
+   */
   toggle = index => {
     if (this.state.activeTab !== index) {
       this.setState({
         activeTab: index
       });
     }
+    if (index === GRID_VIEW_TAB) {
+      this.props.getAllocationGrid();
+    }
+  };
+
+  /**
+   * Calls the action to get assets allocation
+   */
+  componentDidMount () {
+    this.props.getAssetsAllocation();
   }
 
+  /**
+   * Checks for new assets allocation being passed as props
+   * Sets the active view according to the assets allocation data
+   */
+  componentWillReceiveProps (nextProps) {
+    if (nextProps.assetsAllocation !== this.props.assetsAllocation) {
+      const activeTab = nextProps.assetsAllocation.hasGrid ? GRID_VIEW_TAB : TREE_VIEW_TAB;
+
+      if (activeTab === GRID_VIEW_TAB) {
+        this.props.getAllocationGrid();
+      } else {
+        this.props.getAllocationTree();
+      }
+      this.setState({
+        activeTab
+      });
+    }
+  }
+
+  /**
+   * Renders the component
+   */
   render () {
     return (
       <Container className="content" fluid={true}>
@@ -63,7 +110,7 @@ export class Content extends React.Component {
               <TabPane tabId={TREE_VIEW_TAB}>
                 <Row>
                   <Col lg="12">
-                    <TreeView/>
+                    <TreeView />
                   </Col>
                 </Row>
               </TabPane>
@@ -71,7 +118,7 @@ export class Content extends React.Component {
               <TabPane tabId={GRID_VIEW_TAB}>
                 <Row>
                   <Col lg="12">
-                    <GridView/>
+                    <GridView />
                   </Col>
                 </Row>
               </TabPane>
@@ -86,6 +133,7 @@ export class Content extends React.Component {
 
 Content.propTypes = {
   isLoading: PropTypes.bool.isRequired,
+  assetsAllocation: PropTypes.object.isRequired,
 };
 
 Content.defaultProps = {
@@ -98,4 +146,8 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect( mapStateToProps, null )(Content);
+export default connect( mapStateToProps, {
+  getAssetsAllocation,
+  getAllocationTree,
+  getAllocationGrid
+} )(Content);

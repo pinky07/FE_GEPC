@@ -2,8 +2,20 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { isDescendant } from 'react-sortable-tree';
 import Constants from '../../services/constants';
+import { connect } from 'react-redux';
+import { toggleNodeAtPath } from '../../actions';
 
 class TreeNodeRenderer extends Component {
+
+  toggleNodeOnGrid = event => {
+    const { node, path } = this.props;
+    this.props.toggleNodeAtPath({ ...node, showOnGrid: event.target.checked }, path);
+  };
+
+  renderCheckbox = () => {
+    return this.props.treeIndex !== 0 ? <input type="checkbox" onChange={this.toggleNodeOnGrid}/> : null;
+  };
+
   render() { 
     const {
       scaffoldBlockPxWidth,
@@ -27,6 +39,7 @@ class TreeNodeRenderer extends Component {
       didDrop,
       isOver, // Not needed, but preserved for other renderers
       parentNode, // Needed for dndManager
+      toggleNodeAtPath,
       ...otherProps
     } = this.props;
     
@@ -127,6 +140,7 @@ class TreeNodeRenderer extends Component {
                 }
               >
                 <div className="rowLabel">
+                  {this.renderCheckbox()}
                   <span
                     className={
                       'rowTitle ' +
@@ -219,4 +233,5 @@ TreeNodeRenderer.propTypes = {
   canDrop: PropTypes.bool,
 };
 
-export default TreeNodeRenderer;
+export default connect( null, { toggleNodeAtPath, } )(TreeNodeRenderer);
+

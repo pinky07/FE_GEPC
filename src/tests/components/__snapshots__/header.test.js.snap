@@ -6,10 +6,11 @@ exports[`header component renders correctly 1`] = `
     className="app-header"
   >
     <Container
+      fluid={true}
       tag="div"
     >
       <div
-        className="container"
+        className="container-fluid"
       >
         <Row
           tag="div"
@@ -18,49 +19,7 @@ exports[`header component renders correctly 1`] = `
             className="row"
           >
             <Col
-              lg="1"
-              md="1"
-              tag="div"
-              widths={
-                Array [
-                  "xs",
-                  "sm",
-                  "md",
-                  "lg",
-                  "xl",
-                ]
-              }
-            >
-              <div
-                className="col col-md-1 col-lg-1"
-              >
-                NEPC Tree View
-              </div>
-            </Col>
-            <Col
-              className="test"
-              lg="4"
-              md="4"
-              tag="div"
-              widths={
-                Array [
-                  "xs",
-                  "sm",
-                  "md",
-                  "lg",
-                  "xl",
-                ]
-              }
-            >
-              <div
-                className="test col col-md-4 col-lg-4"
-              >
-                Segment: Segment 1
-              </div>
-            </Col>
-            <Col
-              className="test"
-              lg="2"
+              className="vcenter-parent text-left"
               md="2"
               tag="div"
               widths={
@@ -72,17 +31,21 @@ exports[`header component renders correctly 1`] = `
                   "xl",
                 ]
               }
+              xs="12"
             >
               <div
-                className="test col col-md-2 col-lg-2"
+                className="vcenter-parent text-left col-12 col-md-2"
               >
-                Client: Bose
+                <p
+                  className="vcenter"
+                >
+                  NEPC Tree View
+                </p>
               </div>
             </Col>
             <Col
-              className="test"
-              lg="5"
-              md="5"
+              className="vcenter-parent text-center"
+              md="8"
               tag="div"
               widths={
                 Array [
@@ -93,11 +56,69 @@ exports[`header component renders correctly 1`] = `
                   "xl",
                 ]
               }
+              xs="12"
             >
               <div
-                className="test col col-md-5 col-lg-5"
+                className="vcenter-parent text-center col-12 col-md-8"
               >
-                Plan: Bose Corporation Employees’ Retirement Plan
+                <p
+                  className="vcenter"
+                >
+                  Segment: 
+                  <span />
+                   Client: 
+                  <span />
+                   Plan: 
+                  <span />
+                </p>
+              </div>
+            </Col>
+            <Col
+              className="text-right"
+              md="2"
+              tag="div"
+              widths={
+                Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ]
+              }
+              xs="12"
+            >
+              <div
+                className="text-right col-12 col-md-2"
+              >
+                <Button
+                  className="btn-save"
+                  color="primary"
+                  onClick={[Function]}
+                  tag="button"
+                >
+                  <button
+                    className="btn-save btn btn-primary"
+                    onClick={[Function]}
+                    type="button"
+                  >
+                    Save
+                  </button>
+                </Button>
+                <Button
+                  className="btn-help"
+                  color="primary"
+                  onClick={[Function]}
+                  tag="button"
+                >
+                  <button
+                    className="btn-help btn btn-primary"
+                    onClick={[Function]}
+                    type="button"
+                  >
+                    Help
+                  </button>
+                </Button>
               </div>
             </Col>
           </div>

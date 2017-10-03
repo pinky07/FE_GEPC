@@ -4,7 +4,7 @@ exports[`app component renders correctly 1`] = `
 <div
   className="App"
 >
-  <Header />
+  <Connect(Header) />
   <Connect(Content) />
 </div>
 `;
