@@ -49,8 +49,6 @@ export class Content extends React.Component {
     }
     if (index === GRID_VIEW_TAB) {
       this.props.getAllocationGrid();
-    } else {
-      //this.props.getAllocationTree();
     }
   };
 
