@@ -37,7 +37,7 @@ const assetsAllocationModel = () => {
   /**
    * Returns a promise with the name of the assets allocations and the tree structure
    */
-  const getTree2 = () => {
+  const getTree = () => {
     return new Promise((resolve, reject) => {
       const assetsAllocation = _.forEach( this._assetsAllocation.elements, item => {
         item.title = item.accountgroupname;
@@ -47,23 +47,6 @@ const assetsAllocationModel = () => {
         name: this._assetsAllocation.name,
         data: _getTree(assetsAllocation),
       });
-    });
-  };
-
-  const getTree = (gridData = []) => {
-    return new Promise((resolve, reject) => {
-      if (gridData.length === 0) {
-        const assetsAllocation = _.forEach( this._assetsAllocation.elements, item => {
-          item.title = item.accountgroupname;
-          return item;
-        });
-        resolve({
-          name: this._assetsAllocation.name,
-          data: _getTree(assetsAllocation),
-        });
-      } else {
-        resolve();
-      }
     });
   };
 
