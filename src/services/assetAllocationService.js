@@ -1,7 +1,7 @@
 import axios from 'axios';
-import plans from '../data/plans.json';
-import clients from '../data/clients.json';
-import allocations from '../data/allocations.json';
+import plans from '../mockData/plans.json';
+import clients from '../mockData/clients.json';
+import allocations from '../mockData/allocations.json';
 import Constants from './constants';
 
 const allocationService = () => {
@@ -30,10 +30,9 @@ const allocationService = () => {
     });
   };
 
-  const saveAllocations = (assetsAllocation) => {
-    //return axios.get(`http://localhost:3000/${Constants.API}/allocations`);
+  const saveAllocations = (treeData) => {
     return new Promise((resolve, reject) => {
-      resolve(assetsAllocation);
+      resolve(treeData);
     });
   };
 

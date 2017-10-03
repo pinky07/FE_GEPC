@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import * as types from '../../actions/types';
 import * as treeActions from '../../actions/treeActions';
 import { allocationTree as tree } from '../fixtures/tree';
-jest.mock('../../model/assetsAllocationModel');
+jest.mock('../../model/treeModel');
 
 describe ('tree actions', () => {
 
@@ -24,12 +24,25 @@ describe ('tree actions', () => {
   it('creates an async action to fetch the tree', () => {
     const expectedActions = [
       {
-        type: types.GET_TREE_SUCCESS,
+        type: types.GET_ALLOCATION_ASSETS_SUCCESS,
         tree
       }
     ];
 
     return store.dispatch(treeActions.getAllocationTree()).then(() => {
+      expect(store.getActions()).toEqual(expectedActions);
+    });
+  });
+
+  it('creates an async action to save the tree', () => {
+    const expectedActions = [
+      {
+        type: types.SAVE_ALLOCATION_ASSETS_SUCCESS,
+        tree,
+      }
+    ];
+
+    return store.dispatch(treeActions.saveAllocationTree({...tree})).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });

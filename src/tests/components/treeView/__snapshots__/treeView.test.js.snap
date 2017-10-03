@@ -42,7 +42,9 @@ exports[`allocationTree component renders correctly 1`] = `
       }
       xs="12"
     >
-      <TreeButtonBar />
+      <TreeButtonBar
+        save={[Function]}
+      />
     </Col>
     <Col
       lg="4"

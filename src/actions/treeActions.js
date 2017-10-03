@@ -1,13 +1,21 @@
 import * as types from './types';
-import assetsAllocationModel from '../model/assetsAllocationModel';
+import treeModel from '../model/treeModel';
 import lookupService from '../services/lookupService';
 
 export const getAllocationTree = () => {
   return dispatch => {
-    return assetsAllocationModel().getTree().then( tree => {
+    return treeModel().getTree().then( tree => {
       if (tree) {
-        dispatch({ type: types.GET_TREE_SUCCESS, tree });
+        dispatch({ type: types.GET_ALLOCATION_ASSETS_SUCCESS, tree });
       }
+    });
+  };
+};
+
+export const saveAllocationTree = tree => {
+  return dispatch => {
+    return treeModel().saveTree(tree).then( () => {
+      dispatch({ type: types.SAVE_ALLOCATION_ASSETS_SUCCESS, tree });
     });
   };
 };

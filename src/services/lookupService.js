@@ -1,5 +1,4 @@
-import betaGroups from '../data/betaGroups.json';
-import planAnalysisLens from '../data/planAnalysisLens.json';
+import betaGroups from '../mockData/betaGroups.json';
 
 const lookupService = () => {
 
@@ -8,16 +7,9 @@ const lookupService = () => {
       resolve(betaGroups);
     });
   };
-  
-  const getPlanAnalysisLens = () => {
-    return new Promise((resolve, reject) => {
-      resolve(planAnalysisLens);
-    });
-  }
 
   return {
     getBetaGroups,
-    getPlanAnalysisLens,
   };
 }
 

@@ -1,6 +1,6 @@
 import { fakeServer } from 'sinon';
 import allocationService from '../../services/assetAllocationService';
-import allocations from '../../data/allocations.json';
+import allocations from '../../mockData/allocations.json';
 
 describe('allocation service', () => {
     let server;

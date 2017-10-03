@@ -5,14 +5,14 @@ export const columns = [
     width: 350,
   },
   {
-    field: 'assetCategory',
+    field: 'assetCat',
     headerName: 'Asset Category',
-    width: 184,
+    width: 150,
   },
   {
-    field: 'accountgroupname',
+    field: 'alias',
     headerName: 'Asset Class Alias',
-    width: 350,
+    width: 150,
   },
   {
     field: 'aamb',
@@ -35,4 +35,20 @@ export const columns = [
     width: 150,
     editable: true,
   },
+  {
+    field: 'mixB',
+    headerName: 'Mix B',
+    width: 150,
+    editable: true,
+  },
+  {
+    field: 'mixC',
+    headerName: 'Mix C',
+    width: 150,
+    editable: true,
+  }
 ];
+
+const nodeNameComparator = (name1, name2) => {
+  return -1;
+}

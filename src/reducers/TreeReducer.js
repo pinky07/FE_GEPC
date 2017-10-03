@@ -15,10 +15,10 @@ const INITIAL_STATE = {
 
 export default ( state = INITIAL_STATE, action ) => {
   switch (action.type) {
-    case types.GET_TREE_SUCCESS:
+    case types.GET_ALLOCATION_ASSETS_SUCCESS:
       return { ...state, tree: action.tree };
     case types.SELECTED_NODE:
-      return { ...state, selectedNode: { ...action.payload, maxDepth: TreeService().getMaxDepthNode(action.payload.node)} };
+      return { ...state, selectedNode: {...action.payload, maxDepth: TreeService().getMaxDepthNode(action.payload.node)} };
     case types.CHANGE_TREE:
       return { ...state, tree:{ ...state.tree, data: action.treeData } };
     case types.UPDATE_DETAILS_NODE:
@@ -40,8 +40,6 @@ export default ( state = INITIAL_STATE, action ) => {
       return { ...state, tree:{ ...state.tree, data: TreeService().deleteNode(state) }, selectedNode: undefined };
     case types.JUMP_LEVEL:
       return { ...state, tree:{ ...state.tree, data: TreeService().jumpLevel(action.level, state) } };
-    case types.TOGGLE_NODE_AT_PATH:
-      return { ...state, tree:{ ...state.tree, data: TreeService().toggleNodeAtPath(state.tree, action) } };
     default:
       return state;
   }

@@ -85,20 +85,20 @@ export const allocationTree = {
                       aa_model_benchmark: null,
                       actual_mv: null,
                       title: 'zJP Morgan US Researched Enhanced Index',
-                      assetCategory: 'Equity'
+                      assetCat: 'Equity'
                     }
                   ],
-                  assetCategory: 'Equity'
+                  assetCat: 'Equity'
                 }
               ],
-              assetCategory: 'Equity'
+              assetCat: 'Equity'
             }
           ],
-          assetCategory: 'Equity'
+          assetCat: 'Equity'
         }
       ],
       expanded: true,
-      assetCategory: 'Equity'
+      assetCat: 'Equity'
     }
   ]
 };
@@ -171,16 +171,16 @@ export const rowInfo = {
                 aa_model_benchmark: null,
                 actual_mv: null,
                 title: 'zJP Morgan US Researched Enhanced Index',
-                assetCategory: 'Equity'
+                assetCat: 'Equity'
               }
             ],
-            assetCategory: 'Equity'
+            assetCat: 'Equity'
           }
         ],
-        assetCategory: 'Equity'
+        assetCat: 'Equity'
       }
     ],
-    assetCategory: 'Equity'
+    assetCat: 'Equity'
   },
   treeIndex: 1,
   path: [0, 1]

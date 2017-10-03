@@ -1,69 +1,30 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import {
-  Button,
+  Row,
   Col,
   Container,
-  Row,
 } from 'reactstrap';
 
-import {
-  saveAssetsAllocation,
-} from '../actions';
+export default class Header extends React.Component {
 
-/**
- * Header component with Segment, Client and Plan.
- * 
- * @author Francisco Zuñiga
- * @author Rubén Jiménez
- * @class Header
- * @extends {React.Component}
- */
-export class Header extends React.Component {
-
-  /**
-   * Saves everything displayed in the application to the backend by dispatching an action.
-   * 
-   * @memberof Header
-   */
-  save = event => {
-    console.log("Save button clicked!");
-    this.props.saveAssetsAllocation();
-  }
-
-  /**
-   * Displays help information.
-   * 
-   * @memberof Header
-   */
-  help = event => {
-    console.log("Help button clicked!");
-  }
-
-  /**
-   * Renders this component
-   * 
-   * @returns Rendered HTML
-   * @memberof Header
-   */
-  render() {
-    const { segment } = this.props
-    const { client } = this.props
-    const { plan } = this.props
-
+  render () {
     return (
       <div className="app-header">
-        <Container fluid>
+        <Container>
           <Row>
-            <Col xs="12" md="2" className="vcenter-parent text-left">
-              <p className="vcenter">NEPC Tree View</p>
+            <Col lg="1" md="1">
+              NEPC Tree View
             </Col>
-            <Col xs="12" md="8" className="vcenter-parent text-center">
-              <p className="vcenter">Segment: <span>{segment}</span> Client: <span>{client}</span> Plan: <span>{plan}</span></p>
+            <Col lg="4" md="4" className="test">
+              Segment: Segment 1
             </Col>
-            <Col xs="12" md="2" className="text-right">
-              <Button color="primary" className="btn-save" onClick={this.save}>Save</Button>
-              <Button color="primary" className="btn-help" onClick={this.help}>Help</Button>
+
+            <Col lg="2" md="2" className="test">
+              Client: Bose
+            </Col>
+
+            <Col lg="5" md="5" className="test">
+              Plan: Bose Corporation Employees’ Retirement Plan
             </Col>
           </Row>
         </Container>
@@ -71,24 +32,3 @@ export class Header extends React.Component {
     );
   }
 }
-
-/**
- * Maps relevant properties to this component from the store.
- * 
- * @param {*} state 
- */
-const mapStateToProps = state => {
-  return {
-    ...state.spotFire
-  };
-};
-
-/**
- * Connects this component to Redux
- */
-export default connect(
-  mapStateToProps,
-  {
-    saveAssetsAllocation,
-  }
-)(Header);

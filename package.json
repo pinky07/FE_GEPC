@@ -17,8 +17,8 @@
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-bootstrap": "^0.31.2",
-    "react-color": "2.13.5",
-    "react-contexify": "2.0.7",
+    "react-color": "^2.13.5",
+    "react-contexify": "^2.0.7",
     "react-data-grid": "^2.0.55",
     "react-dom": "^15.6.1",
     "react-dom-factories": "^1.0.1",
@@ -31,11 +31,9 @@
     "reactcss": "^1.2.2",
     "reactstrap": "^4.8.0",
     "redux": "^3.7.2",
-    "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0"
   },
   "scripts": {
-    "generate-docs": "jsdoc -c jsdoc.json",
     "build-css": "node-sass-chokidar src/styles/scss/app.scss -o src/styles/css",
     "watch-css": "npm run build-css && node-sass-chokidar src/styles/scss -o src/styles/css --watch --recursive",
     "start-js": "react-scripts start",
@@ -45,11 +43,9 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "docdash": "^0.4.0",
     "enzyme": "^2.9.1",
     "enzyme-to-json": "^1.5.1",
     "jest": "^20.0.4",
-    "jsdoc": "~3.5.5",
     "moxios": "^0.4.0",
     "react-test-renderer": "^15.6.1",
     "redux-devtools-extension": "^2.13.2",

@@ -138,15 +138,6 @@ const treeService = () => {
     return maxDepth;
   };
 
-  const toggleNodeAtPath = (tree, { node, path }) => {
-    return changeNodeAtPath({
-      treeData: tree.data,
-      path,
-      getNodeKey: ({ treeIndex }) => treeIndex,
-      newNode: node,
-    });
-  };
-
   const isRootNode = node => node && node.treeIndex === 0;
 
   return {
@@ -158,7 +149,6 @@ const treeService = () => {
     updateNode,
     jumpLevel,
     getMaxDepthNode,
-    toggleNodeAtPath,
     isRootNode,
   };
 }

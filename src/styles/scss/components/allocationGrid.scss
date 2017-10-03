@@ -1,19 +1,39 @@
-.gridView {
-  .dropdownPlanAnalysis {
-    margin-left: 350px;
-    width: 184px;
-    display: inline-block;
-  }
+.allocationGrid {
+  height: 1000px;
 
   .gridContainer {
-    padding-top: .5em;
+  }
+
+  .aggridcontainer {
+    padding-top: 1em;
     width: 100%;
     height: 800px;
     padding-bottom: 2em;
     overflow: hidden;
   }
 
-  .ag-header-row {
+  .titlediv {
+    width: 100%;
+    position: relative;
+    padding-bottom: 2em;
+    .value {
+      position: absolute;
+      right: 0;
+      height: 50px;
+      width: 450px;
+    }
+  }
+
+  .rdg-child-row-action-cross {
+    display: none;
+  }
+
+  .numericCell {
+    text-align: center;
+    color: $gray-1;
+  }
+
+  .react-grid-HeaderCell, .ag-header-row {
     color: white;
     font-weight: bold;
     background-color: $blue-1 !important;
@@ -25,12 +45,42 @@
     height: 100%;
   }
 
-  .ag-row.ag-row-even {
+  .react-grid-Cell {
+    background: none !important;
+    border-color: white !important;
+  }
+
+
+  .react-grid-Container {
+    max-width: 1400px;
+    width: 180% !important;
+  }
+
+  /*.react-grid-Container {
+    width: auto !important;
+  }*/
+  .react-grid-Canvas {
+    overflow-x: hidden !important;
+  }
+
+  .react-grid-Main {
+    outline: none !important;
+  }
+
+  .react-grid-Grid {
+    border: none !important;
+  }
+
+  .darkGreenRow, .ag-row.ag-row-even {
     background-color: $green-1;
   }
 
-  .ag-row.ag-row-odd {
+  .lightGreenRow, .ag-row.ag-row-odd {
     background-color: $green-2;
   }
 
+  .betagroupDropdown {
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
 }

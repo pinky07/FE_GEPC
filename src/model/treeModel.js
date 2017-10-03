@@ -31,8 +31,8 @@ const treeModel = () => {
     });
   };
 
-  const saveTree = tree => {
-    return assetAllocationService().saveAllocations(tree).then(() => {
+  const saveTree = treeData => {
+    return assetAllocationService().saveAllocations(treeData).then(() => {
      //console.log(treeData);
     });
   }
